@@ -11,6 +11,12 @@ const getBanners = async function() {
 //      this.list = res
 // })
 
+const getCurrData = async () => {
+    const data =  await server.get('https://new-api.meiqia.com/visit/get_base_config?ent_id=149768');
+    console.log(data)
+}
+
 export {
     getBanners,
+    getCurrData
 }

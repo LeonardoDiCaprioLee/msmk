@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Vue from 'vue'
-import loading from "@/components"
-Vue.use(loading)
+// import loading from "@/components"
+// Vue.use(loading)
 const server = axios.create({
-    baseURL: "https://api.it120.cc",
+    baseURL: "",
     timeout: 10000 // 请求超时的时间
 })
 
