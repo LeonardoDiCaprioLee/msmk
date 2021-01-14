@@ -1,6 +1,5 @@
 import server from '../server/http';
 
-// 请求轮播图数据
 // 获取数据
 const getBanners = async function() {
     var {data} = await server.get('/small4/banner/list')
