@@ -5,14 +5,19 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path:'/',
-    redirect:'/home'
+    path: '/',
+    redirect: '/home'
+  },
+  {
+    path: "/details",
+    name: "Details",
+    component: () => import("../views/jie/details")
   },
   {
     path: '/home',
     name: 'Home',
     component: () => import('../views/Home.vue'),
-    children : [
+    children: [
       ...whjRouter
     ]
   },
