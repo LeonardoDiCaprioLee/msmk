@@ -28,6 +28,18 @@
                 </li>
             </ul>
         </div>
+        <!-- 课程介绍 -->
+        <div class="cd-tro">
+            <strong>教师团队</strong>
+        </div>
+        <!-- 课程大纲 -->
+        <div class="cd-tro">
+            <strong>课程大纲</strong>
+        </div>
+        <!-- 课程评价 -->
+        <div class="cd-tro">
+            <strong>课程评价</strong>
+        </div>
     </div>
     
     <!-- 底部 -->
@@ -105,7 +117,8 @@ export default {
         height: 2.8994rem;
         padding: 0.1rem 0.2rem;
         strong{
-            padding: 0.2rem 0px 0px;
+            display: block;
+            margin: 0.2rem 0px 0px;
         }
         ul {
             li{
@@ -116,10 +129,18 @@ export default {
                     width: 0.78rem;
                 }
                 span{
-                    padding: 0.14rem 0.6rem 0px;
+                    padding: 0.14rem 0.06rem 0px;
                 }
             }
         }
+    }
+    .cd-tro{
+        margin: 0.3rem 0px 0px;
+        font-size: 0.3rem;
+        margin: 0.3rem 0px 0px;
+        background: white;
+        height: 1.2992rem;
+        padding: 0.1rem 0.2rem;
     }
 }
 </style>
