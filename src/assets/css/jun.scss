@@ -1,5 +1,7 @@
-body{
+body,html,#app{
     background: #f0f2f5;
+    // height: 100%;
+    // font-size: 0.12rem;
 }
 
 /* 小框框 */
@@ -73,3 +75,62 @@ body{
         }
     }
 }
+
+
+// 方盒子
+.box-f{
+    width: 100%;    
+    display: flex;
+    justify-content: space-around;
+    // background: pink;
+   .box-f-z{
+       width: 7.104rem;
+    height: 3.5rem;
+    background: white;
+    margin-top: 0.2rem;
+    border-radius: 0.15rem;
+    p{
+        width: 90%;
+    }
+    span{
+        padding-left: 0.3rem;
+        color: #b7b7b7;
+    }
+    .box-f-ul1{
+        width: 100%;
+        float: left;
+        margin-top: 0.4rem;
+        li{
+            float: left;
+            img{
+                width:0.76rem;
+                height:0.76rem;
+                border-radius: 50%;
+            }
+            font-size: 0.12rem;
+            text-align: center;
+            line-height: 0.8rem;
+            padding-left: 0.3rem;
+            color: #b7b7b7;
+        }
+    }
+    .box-f-ul2{
+        width: 100%;
+        float: left;
+        float: left;
+        display: flex;
+        justify-content: space-between;
+
+        li{
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+            float: left;
+            
+        }
+        .baoming{
+            color: #b7b7b7
+        }
+    }
+   }
+}
+// 方盒子
