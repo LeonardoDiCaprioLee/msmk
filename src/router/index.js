@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import lixiang from './xiang/index.js'
+import whjRouter from "./whj_router"
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,7 +14,8 @@ const routes = [
     name: 'Home',
     component: () => import('../views/Home.vue'),
     children:[
-      ...lixiang
+      ...lixiang,
+      ...whjRouter
     ]
   },
 ]

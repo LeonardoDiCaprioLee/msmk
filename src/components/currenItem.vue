@@ -1,0 +1,123 @@
+<template>
+  <div>
+    <div class="currItem" v-for="item in currData" :key="item.id">
+      <!-- 标题 -->
+      <p class="title">
+        <font>{{ item.title }}</font>
+      </p>
+      <!-- 时间 -->
+      <div class="time">
+        <p>
+          <van-icon name="underway-o" />
+          <span>&emsp;03月16日 18:30</span>
+          <span> ~ </span>
+          <span>03月22日 20:30</span>
+          <span> | </span>
+          <span>共8课时</span>
+        </p>
+      </div>
+      <!-- 任课老师 -->
+      <div class="teacher border-bottom">
+        <div
+          class="teacher-item"
+          v-for="items in item.teachers_list"
+          :key="items.id"
+        >
+          <img
+            src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
+            alt=""
+          />
+          <span>{{ items.teacher_name }}</span>
+        </div>
+      </div>
+      <!-- 价格 -->
+      <div class="info">
+        <span class="person">1777人已报名</span>
+        <span class="free">免费</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ["currData"],
+  data() {
+    return {};
+  },
+  methods: {},
+  computed: {},
+  filters: {},
+  components: {},
+  directives: {},
+  mounted() {
+    console.log(this.asd);
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.currItem {
+  width: 6.9rem;
+  height: 3.5794rem;
+  background: white;
+  padding: 0 0.28rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.3rem;
+  // 标题
+  .title {
+    width: 100%;
+    padding-top: 0.3rem 0px 0px;
+    overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    font {
+      width: 100%;
+      font-size: 0.44rem;
+      font-weight: 700;
+    }
+  }
+  // 时间
+  .time {
+    font-size: 0.24rem;
+    height: 0.6rem;
+    display: flex;
+    align-items: center;
+  }
+
+  // 任课老师
+  .teacher {
+    height: 1.2996rem;
+    .teacher-item {
+      margin: 0;
+      width: 1.54rem;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      img {
+        width: 0.54rem;
+      }
+      span {
+        font-size: 0.24rem;
+        color: gray;
+      }
+    }
+  }
+  // 报名价格
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.7rem;
+    .person {
+      font-size: 0.26rem;
+      color: gray;
+    }
+    .free {
+      font-size: 0.32rem;
+      color: #44a426;
+    }
+  }
+}
+</style>

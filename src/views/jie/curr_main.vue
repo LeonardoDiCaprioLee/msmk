@@ -1,0 +1,241 @@
+<template>
+  <div class="currMain">
+    <div class="currItem">
+      <!-- 标题 -->
+      <p class="title">
+        <font>李老师开课了...</font>
+      </p>
+      <!-- 时间 -->
+      <div class="time">
+        <p>
+          <van-icon name="underway-o" />
+          <span>&emsp;03月16日 18:30</span>
+          <span> ~ </span>
+          <span>03月22日 20:30</span>
+          <span> | </span>
+          <span>共8课时</span>
+        </p>
+      </div>
+      <!-- 任课老师 -->
+      <div class="teacher border-bottom">
+        <div class="teacher-item">
+          <img
+            src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
+            alt=""
+          />
+          <span>李想</span>
+        </div>
+      </div>
+      <!-- 价格 -->
+      <div class="info">
+        <span class="person">1777人已报名</span>
+        <span class="free">免费</span>
+      </div>
+    </div>
+    <qwe :currData="list"></qwe>
+  </div>
+</template>
+
+<script>
+import { getCurrData } from "../../utils/api/index";
+import qwe from "@/components/currenItem";
+export default {
+  data() {
+    return {
+      list: [
+        {
+          id: 254,
+          title:
+            "每时每课-初一英语-want、think about以及询问某人喜欢某物、三餐等习题讲解",
+          price: 0,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 23,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 0,
+          browse_base: 0,
+          browse_num: 74,
+          sales_num: 31,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "璐璐",
+              course_basis_id: 254,
+            },
+          ],
+          brows_num: 74,
+        },
+        {
+          id: 253,
+          title: "每时每课-初一英语-want、think about以及询问某人喜欢某物、三餐等知识点",
+          price: 0,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 23,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 0,
+          browse_base: 0,
+          browse_num: 23,
+          sales_num: 27,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "璐璐",
+              course_basis_id: 253,
+            },
+          ],
+          brows_num: 23,
+        },
+        {
+          id: 248,
+          title: "每时每课-初一英语-一般现在时中have的用法习题讲解",
+          price: 0,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 12,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 0,
+          browse_base: 0,
+          browse_num: 16,
+          sales_num: 15,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "璐璐",
+              course_basis_id: 248,
+            },
+          ],
+          brows_num: 16,
+        },
+        {
+          id: 247,
+          title: "每时每课-初一英语-一般现在时中have的用法知识点",
+          price: 0,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 11,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 0,
+          browse_base: 0,
+          browse_num: 9,
+          sales_num: 12,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "璐璐",
+              course_basis_id: 247,
+            },
+          ],
+          brows_num: 9,
+        },
+      ],
+    };
+  },
+  methods: {},
+  computed: {},
+  filters: {},
+  components: {
+    qwe,
+  },
+  directives: {},
+  mounted() {},
+  created() {
+    getCurrData();
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.currMain {
+  padding: 0.3rem;
+  overflow: scroll;
+  font: inherit;
+  // 渲染的div
+  .currItem {
+    width: 6.9rem;
+    height: 3.5794rem;
+    background: white;
+    padding: 0 0.28rem;
+    border-radius: 0.2rem;
+    margin-bottom: 0.3rem;
+    // 标题
+    .title {
+      padding-top: 0.3rem 0px 0px;
+      font {
+        font-size: 0.44rem;
+        font-weight: 700;
+      }
+    }
+    // 时间
+    .time {
+      font-size: 0.24rem;
+      height: 0.6rem;
+      display: flex;
+      align-items: center;
+    }
+
+    // 任课老师
+    .teacher {
+      height: 1.2996rem;
+      .teacher-item {
+        margin: 0;
+        width: 1.54rem;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+          width: 0.54rem;
+        }
+        span {
+          font-size: 0.24rem;
+          color: gray;
+        }
+      }
+    }
+    // 报名价格
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 0.7rem;
+      .person {
+        font-size: 0.26rem;
+        color: gray;
+      }
+      .free {
+        font-size: 0.32rem;
+        color: #44a426;
+      }
+    }
+  }
+}
+</style>
