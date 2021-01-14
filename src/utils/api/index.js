@@ -12,6 +12,7 @@ import { promises } from 'fs';
 //      this.list = res
 // })
 
+<<<<<<< HEAD
 // 首页轮播图
 const getBanners = async function () {
     let list = [
@@ -43,6 +44,14 @@ const getBanners = async function () {
 
 // 首页轮播图
 
+=======
+const getCurrData = async () => {
+    const data =  await server.get('https://new-api.meiqia.com/visit/get_base_config?ent_id=149768');
+    console.log(data)
+}
+
+>>>>>>> a0c29599bcf524672726aac86b1e42dbba6ccf50
 export {
     getBanners,
+    getCurrData
 }
