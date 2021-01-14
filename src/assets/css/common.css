@@ -4,7 +4,7 @@
 html,body{
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .border-bottom,.border-top,.border-left,.border-right {
@@ -26,7 +26,7 @@ html,body{
     content: '';
     position: absolute;
     width: 200%;
-    height: 1px;
+    height: 10px;
     background-color: #999;
     transform: scale(0.5);
     top: 0;

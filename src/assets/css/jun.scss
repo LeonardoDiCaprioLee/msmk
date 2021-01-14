@@ -1,0 +1,136 @@
+body,html,#app{
+    background: #f0f2f5;
+    // height: 100%;
+    // font-size: 0.12rem;
+}
+
+/* 小框框 */
+.index-kinds{
+    width:100%;
+    // height:2.06rem;
+    height:1.2rem;
+    // background:pink;
+  
+    ul{
+        width: 100%;
+        height: 2.06rem;
+        position: absolute;
+        top: 3.34rem;
+        display: flex;
+    justify-content: space-around;
+        li{
+            
+            img{
+                margin-top: 0.5rem;
+            }
+            width: 2.06rem;
+            height: 2.06rem;
+            background: white;
+            border-radius: 0.2rem;
+            text-align: center;
+            line-height: 0.8rem;
+        }
+    }
+}
+// 分类标题
+.op-title{
+    font-size: 0.30rem;
+    border-left: solid 0.08rem #eb6100;
+    margin-left: 0.28rem;
+    padding-left: 0.14rem;
+    margin-top: 0.5rem;
+}
+.oto-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.3rem;
+}
+// 老师分类
+.oc-item{
+    width: 7.104rem;
+    height: 1.6208rem;
+    background: white;
+    img{
+        
+        width:0.76rem;
+        height:0.76rem;
+        float: left;
+        border-radius:50%;
+        margin-top: 0.36rem;
+        margin-left: 0.26rem;
+    }
+    ul{
+        width: 80%;
+        float: left;
+        margin-top: 0.36rem;
+        li{
+            width: 100%;
+            font-size: 0.30rem;
+            margin-left: 0.24rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            
+        }
+    }
+}
+
+
+// 方盒子
+.box-f{
+    width: 100%;    
+    display: flex;
+    justify-content: space-around;
+    // background: pink;
+   .box-f-z{
+       width: 7.104rem;
+    height: 3.5rem;
+    background: white;
+    margin-top: 0.2rem;
+    border-radius: 0.15rem;
+    p{
+        width: 90%;
+    }
+    span{
+        padding-left: 0.3rem;
+        color: #b7b7b7;
+    }
+    .box-f-ul1{
+        width: 100%;
+        float: left;
+        margin-top: 0.4rem;
+        li{
+            float: left;
+            img{
+                width:0.76rem;
+                height:0.76rem;
+                border-radius: 50%;
+            }
+            font-size: 0.12rem;
+            text-align: center;
+            line-height: 0.8rem;
+            padding-left: 0.3rem;
+            color: #b7b7b7;
+        }
+    }
+    .box-f-ul2{
+        width: 100%;
+        float: left;
+        float: left;
+        display: flex;
+        justify-content: space-between;
+
+        li{
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+            float: left;
+            
+        }
+        .baoming{
+            color: #b7b7b7
+        }
+    }
+   }
+}
+// 方盒子

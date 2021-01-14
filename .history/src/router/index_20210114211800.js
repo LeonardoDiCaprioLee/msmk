@@ -8,11 +8,14 @@ const routes = [
   {
     path: '/',
     redirect: '/home'
+<<<<<<< HEAD
   },
   {
     path: "/details",
     name: "Details",
     component: () => import("../views/jie/details")
+=======
+>>>>>>> e132c30f1bb55a3b6d5d92d2218d7dff352a041f
   },
   {
     path: '/home',
