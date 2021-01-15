@@ -106,7 +106,7 @@
                             <img src="@/assets/images/my-img/4-3.png" alt="">
                             <span>在线服务</span>
                         </div>
-                        <div>
+                        <div @click="reset">
                             <img src="@/assets/images/my-img/4-4.png" alt="">
                             <span>设置</span>
                         </div>
@@ -124,10 +124,25 @@ export default {
     },
     mounted() {},
     methods: {
+        // 跳转优惠券页面
         discount() {
             this.$router.push({path:'/discount'})
+        },
+        // 跳转设置页面
+        reset(){
+            this.$router.push({path:'/reset'})
         }
     },
+    // 我的页面鉴权
+    beforeRouteEnter (to, from, next) {
+        next(vm=>{
+            if(vm.$store.state.token){
+                next()
+            }else {
+                next('/login')
+            }
+        })
+    }
 };
 </script>
 

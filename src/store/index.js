@@ -11,7 +11,11 @@ export default new Vuex.Store({
   },
   mutations: {
     login(state,user){
+        // 登录token存储
         state.token = user
+    },
+    out(state){ // 退出登录
+      state.token = ''
     }
   },
   actions: {
