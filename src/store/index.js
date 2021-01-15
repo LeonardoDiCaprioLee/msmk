@@ -12,15 +12,18 @@ export default new Vuex.Store({
     token: '',
   },
   mutations: {
+    login(state,user){
+        // 登录token存储
+        state.token = user
+    },
+    out(state){ // 退出登录
+      state.token = ''
+    },
     // 分类数据筛选
     chooseGrades(state, arr) {
       state.chooseGrades = arr;
       console.log(state.chooseGrades)
     },
-
-    login(state, user) {
-      state.token = user
-    }
   },
   actions: {
   },

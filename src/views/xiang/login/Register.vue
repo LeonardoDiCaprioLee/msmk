@@ -1,31 +1,32 @@
 <template>
-    <div class='login'>
-        <p class="header"><van-icon name="arrow-left" size="20" @click="$router.go(-1)"/></p>
+    <div class='register'>
+        <p class="header"><van-icon name="arrow-left" size="20"/></p>
         <div class="content">
             <img src="@/assets/images/login-img/logo.png" alt="">
             <div class="one">
                 <van-icon name="friends-o" size="30"/>
                 <p class="border-bottom">
-                    <input type="text" v-model="user" placeholder="请输入账号">
-                    <!-- <button>获取验证码</button> -->
+                    <input type="text" v-model="tel" placeholder="请输入手机号">
+                    <button @click="test" v-if="show == true">获取验证码</button>
+                    <button v-else class="gray">{{outTime}}s</button>
                 </p>
             </div>
             <div class="tow">
                 <van-icon name="friends-o"  size="30"/>
                 <p class="border-bottom">
-                    <input type="text" v-model="pass" placeholder="请输入密码">
+                    <input type="text" v-model="passTest" placeholder="请输入验证码">
                 </p>
             </div>
             <div class="log_btn">
                 <button @click="login">登录</button>
             </div>
             <div class="back">
-                <span>找回密码</span>
-                <span @click="register">注册/ 验证码登录</span>
+                <span>*未注册的手机号将自动注册</span>
+                <span @click="password">密码登录</span>
             </div>
             <div class="or">
                 <span class="border-bottom wid"></span>
-                <span>或以下方式登录</span>
+                <span>第三方登录</span>
                 <span class="border-bottom wid"></span>
             </div>
             <ul>
@@ -50,33 +51,51 @@
 export default {
     data() {
         return {
-            user:'',
-            pass:''
+            tel:'',
+            passTest:'',
+            show:true,
+            outTime:60
         };
     },
     mounted() {},
     methods: {
-        login() {
-            if(this.user != '' && this.pass != ''){
-                if(this.pass == localStorage.getItem('pass')){
-                    this.$store.commit('login',this.user)
-                    this.$router.push({path:'/index'})
-                } else {
-                    this.$toast.fail('账号密码不正确');
+        password(){
+            this.$router.push({path:'/login'})
+        },
+        test(){
+            if(this.tel != '') {
+                this.show = false;
+                let arr = [1,2,3,4,5,6,7,8,9,0]
+                let num = ''
+                for(var i=0;i<4;i++){
+                    num+=parseInt(Math.random()*arr.length)
                 }
-            } else {
-                this.$toast.fail('账号密码不能为空');
+                setTimeout(()=>{
+                    this.passTest = num 
+                }, 5000)
+                setInterval(()=>{
+                    if(this.passTest==''){
+                        this.outTime > 0 ? this.outTime-- : this.outTime = 0
+                    }else {
+                        return 
+                    }
+                }, 1000)
             }
         },
-        register(){
-            this.$router.push({path:'/register'})
-        }
+        login() {
+            if(this.tel != '' && this.passTest != ''){
+                this.$store.commit('login',this.tel)
+                this.$router.push({path:'/resetpass'})
+            } else {
+                this.$toast.fail('手机号验证码不能为空');
+            }
+        },
     },
 };
 </script>
 
 <style lang='scss' scoped>
-    .login{
+    .register{
         width: 100%;
         height: 100%;
         background-color: #fff;
@@ -127,6 +146,10 @@ export default {
                         background-color: orangered;
                         border-radius: 0.1rem;
                         color: #fff;
+                    }
+                    .gray{
+                        background-color: #eee;
+                        color: orangered;
                     }
                 }
             }

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import lixiang from './xiang/index.js'
+import {add} from './xiang/ones.js'
 import whjRouter from "./whj_router"
 Vue.use(VueRouter)
 import jun from './jun'
@@ -16,11 +17,6 @@ const routes = [
     component: () => import("../views/jie/details")
   },
   {
-    path: "/login",
-    name: "Login",
-    component: () => import("../views/xiang/login/Login.vue")
-  },
-  {
     path: '/home',
     name: 'Home',
     component: () => import('../views/Home.vue'),
@@ -30,15 +26,11 @@ const routes = [
       ...whjRouter,
       ...jun,
     ],
-   
   },
-  {
-    path: "/discount",
-    name: "Discount",
-    component: () => import("@/views/xiang/my/Discount.vue")
-  },
+  // 外部路由登录、优惠券
+  ...add,
   // 外部路由
- ...jun1
+  ...jun1
   // 外部路由
 
 ]

@@ -104,18 +104,20 @@ export default {
       this.classify()
   },
   methods: {
-      onClickLeft(){
-          this.$router.go(-1)
-      },
-      classify(){
-          if(this.active == 0){
-              this.list = this.discount
-          } else {
-                this.list = this.discount.filter(item=>{
-                    return item.cid == this.active
-                })
-          }
-      },
+    //   返回上一层
+    onClickLeft(){
+        this.$router.go(-1)
+    },
+    //   登录
+    classify(){
+        if(this.active == 0){
+            this.list = this.discount
+        } else {
+              this.list = this.discount.filter(item=>{
+                  return item.cid == this.active
+              })
+        }
+    },
 
   },
 };
@@ -148,7 +150,7 @@ export default {
                     color: orangered;
                     text-align: center;
                     span{
-                        font-size: 1rem;
+                        font-size: 0.8rem;
                     }
                 }
                 li:nth-child(2){
@@ -161,7 +163,7 @@ export default {
                         margin: 0.1rem 0;
                     }
                     span:nth-child(1){
-                        font-size: 0.4rem;
+                        font-size: 0.34rem;
                         font-weight: bold;
                     }
                     span:nth-child(2),span:nth-child(3){
@@ -174,8 +176,8 @@ export default {
                         border: none;
                         width: 100%;
                         height: 100%;
-                        font-size: 0.4rem;
-                        background-color: orangered;
+                        font-size: 0.3rem;
+                        background-color: rgba(255, 68, 0, 0.781);
                         border-radius: 0.2rem;
                         color: #fff;
                     }
