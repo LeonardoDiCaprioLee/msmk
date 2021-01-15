@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="currItem" v-for="item in currData" :key="item.id" @click="goDetiles">
+    <div class="currItem" v-for="item in currData" :key="item.id" @click="goDetiles(item)">
       <!-- 标题 -->
       <p class="title">
         <font>{{ item.title }}</font>
@@ -13,7 +13,7 @@
           <span> ~ </span>
           <span>03月22日 20:30</span>
           <span> | </span>
-          <span>共8课时</span>
+          <span>共{{item.total_periods}}课时</span>
         </p>
       </div>
       <!-- 任课老师 -->
@@ -33,7 +33,8 @@
       <!-- 价格 -->
       <div class="info">
         <span class="person">1777人已报名</span>
-        <span class="free">免费</span>
+        <span v-show="item.underlined_price <= 0" class="free">免费</span>
+        <span v-show="item.underlined_price > 0" class="free" style="color:orange;">${{item.underlined_price}}</span>
       </div>
     </div>
   </div>
@@ -43,11 +44,13 @@
 export default {
   props: ["currData"],
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
-    goDetiles(){
-      this.$router.push("/details")
+    goDetiles(item){
+      // console.log(item)
+      this.$router.push({path : "/details",query : item})
     }
   },
   computed: {},
@@ -55,7 +58,6 @@ export default {
   components: {},
   directives: {},
   mounted() {
-    console.log(this.asd);
   },
 };
 </script>

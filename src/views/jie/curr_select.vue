@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import eventBus from "./eventBus"
 export default {
   data() {
     return {
@@ -224,6 +225,8 @@ export default {
           screen_flag: false,
         },
       ],
+      // 选择分类的数组
+      chooseGrades : [],
     };
   },
   methods: {
@@ -249,6 +252,15 @@ export default {
     chooseDiv(items, cIndex) {
       // 获取它是年级还是学科的数据
       let obj = this.classify[cIndex];
+      // 将选中的push到数组中用于筛选
+      // for(let key in items){
+      //   this.chooseGrades[key] = items[key]
+      // }
+      if(this.chooseGrades.length >= 2){
+        this.chooseGrades.shift();
+      }
+      this.chooseGrades.push(items.classGrades)
+      console.log(this.chooseGrades)
       // 排他将其余的flag设置为false
       obj.grades.forEach((item) => {
         item.flag = false;
@@ -287,6 +299,9 @@ export default {
       });
       this.selectData[index].flag = false;
       this.activeName = "";
+
+      // 将选中的数组通过vuex给传到兄弟组件中
+      this.$store.commit("chooseGrades",this.chooseGrades)
     },
     // 清空样式
     reset() {
@@ -296,6 +311,9 @@ export default {
           item.flag = false;
         });
       }
+      this.chooseGrades = [];
+      // 将选中的数组通过vuex给传到兄弟组件中
+      this.$store.commit("chooseGrades",this.chooseGrades)
     },
   },
   computed: {},
