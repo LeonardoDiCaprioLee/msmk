@@ -1,55 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class='exercise'>
-        <van-nav-bar
-        title="练习"
-        />
-        <div class="sex">
-            <ul>
-                <li @click="$router.push({path:'/site'})">
-                    <div><img src="../../assets/images/exercise-img/1-1.png" alt=""></div>
-                    <p>考点专练</p>
-                </li>
-                <li @click="$router.push('/rollUp')">
-                    <div><img src="../../assets/images/exercise-img/1-2.png" alt=""></div>
-                    <p>套卷练习</p>
-                </li>
-                <li @click="$router.push('simulation')">
-                    <div><img src="../../assets/images/exercise-img/1-3.png" alt=""></div>
-                    <p>仿真模拟</p>
-                </li>
-                <li @click="$router.push('/Wrong')">
-                    <div><img src="../../assets/images/exercise-img/1-4.png" alt=""></div>
-                    <p>错题练习</p>
-                </li>
-                <li @click="$router.push('Evaluation')">
-                    <div><img src="../../assets/images/exercise-img/1-5.png" alt=""></div>
-                    <p>测评记录</p>
-                </li>
-                <li @click="$router.push('Collection')">
-                    <div><img src="../../assets/images/exercise-img/1-6.png" alt=""></div>
-                    <p>习题收藏</p>
-                </li>
-            </ul>
-        </div>
-        <div class="content">
-            <p class="one">近期模考</p>
-            <p class="tow">
-                <span  @click="show1" :class="show==true?'color':''">默认排序</span>
-                <span>
-                    <span @click="show2" :class="show==false?'color':''" class="time">时间</span>
-                    <span v-show="!arrows==''">
-                        <img v-if="arrows==false" src="../../assets/images/exercise-img/top.png" alt="">
-                        <img v-else-if="arrows==true" src="../../assets/images/exercise-img/bottom.png" alt="">
-                    </span>
-                </span>
-            </p>
-            <div class="no">
-                <img src="../../assets/images/exercise-img/max.png" alt="">
-                <p>暂无模考安排，敬请期待</p>
-            </div>
-        </div>
-=======
   <div class="exercise">
     <van-nav-bar title="练习" />
     <div class="sex">
@@ -91,7 +40,6 @@
           <p>习题收藏</p>
         </li>
       </ul>
->>>>>>> 18a2d772249318c9af0fcbd16066c51f6abb4338
     </div>
 </template>
 
