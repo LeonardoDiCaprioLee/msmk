@@ -74,14 +74,13 @@
       </div>
       <!-- 方盒子 -->
     </div>
-    <div style="width:100%;height:1rem;margin-top:1rem">
-    </div>
+    <div style="width:100%;height:1rem;margin-top:1rem"></div>
     <!-- 登录弹框 -->
     <van-popup class="van-popup-show" v-model="show">
       <p class="show-x" @click="show=false">X</p>
       <p style="margin-top:5.5rem;font-size:0.4rem;text-align:center;font-weight:bold;">赶紧登陆一下吧</p>
       <p style="font-size:0.24rem;text-align:center;margin-top:0.32rem;">立即预约一对一辅导,浏览更多视频课程~</p>
-      <van-button  style="width:80%;" @click="$router.push('/login')">立即登录</van-button>
+      <van-button style="width:80%;" @click="$router.push('/login')">立即登录</van-button>
     </van-popup>
     <!-- 登录弹框 -->
   </div>
@@ -122,22 +121,21 @@ export default {
   computed: {},
   methods: {
     // 跳转路由
-    jump_router(){
-      if(this.$store.state.token!=''){
-        this.$router.push('/curriculum')
-        this.show=false
-      }else{
-        this.show=true
+    jump_router() {
+      if (this.$store.state.token != "") {
+        this.$router.push("/curriculum");
+        this.show = false;
+      } else {
+        this.show = true;
       }
     },
     // 跳转日历
-    jump_rili(){
-
-       if(this.$store.state.token!=''){
-        this.$router.push('/calendar')
-        this.show=false
-      }else{
-        this.show=true
+    jump_rili() {
+      if (this.$store.state.token != "") {
+        this.$router.push("/calendar");
+        this.show = false;
+      } else {
+        this.show = true;
       }
     }
   }

@@ -18,11 +18,11 @@ export default [
         name: 'Wrong',
         component: () => import('../views/jun/Wrong.vue')
     },
-    {
-        path: '/Collection',
-        name: 'Collection',
-        component: () => import('../views/jun/Collection.vue')
-    },
+    // {
+    //     path: '/Collection',
+    //     name: 'Collection',
+    //     component: () => import('../views/jun/Collection.vue')
+    // },
    
 ]
 
