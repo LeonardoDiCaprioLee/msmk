@@ -36,7 +36,7 @@ const getBanners = async function () {
             link_type: 0,
         }
     ]
-    var { data } = await server.get('https://www.365msmk.com/api/app/banner?')
+    // var { data } = await server.get('https://www.365msmk.com/api/app/banner?')
     // 因为请求不到数据自己模拟数据
     return list
 }

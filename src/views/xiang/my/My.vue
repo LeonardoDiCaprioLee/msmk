@@ -5,10 +5,10 @@
             <div class="conter">
                 <div class="top">
                     <div>
-                        <img src="../../assets/images/my-img/head.jpg" alt="">
-                        <img src="../../assets/images/my-img/crown.png" alt="" class="crown">
+                        <img src="@/assets/images/my-img/head.jpg" alt="">
+                        <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
-                    <span class="tel">18537217353<img src="../../assets/images/my-img/open.png" alt=""></span>
+                    <span class="tel">{{$store.state.token}}<img src="@/assets/images/my-img/open.png" alt=""></span>
                     <span>去约课</span>
                 </div>
                 <ul>
@@ -48,11 +48,11 @@
                     <p>课程相关</p>
                     <div>
                         <div>
-                            <img src="../../assets/images/my-img/1-1.png" alt="">
+                            <img src="@/assets/images/my-img/1-1.png" alt="">
                             <span>关注的老师</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/1-2.png" alt="">
+                            <img src="@/assets/images/my-img/1-2.png" alt="">
                             <span>我的收藏</span>
                         </div>
                     </div>
@@ -61,15 +61,15 @@
                     <p>订单相关</p>
                     <div>
                         <div>
-                            <img src="../../assets/images/my-img/2-1.png" alt="">
+                            <img src="@/assets/images/my-img/2-1.png" alt="">
                             <span>课程订单</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/2-1.png" alt="">
+                            <img src="@/assets/images/my-img/2-1.png" alt="">
                             <span>会员订单</span>
                         </div>
                          <div>
-                            <img src="../../assets/images/my-img/2-1.png" alt="">
+                            <img src="@/assets/images/my-img/2-1.png" alt="">
                             <span>约课订单</span>
                         </div>
                     </div>
@@ -77,16 +77,16 @@
                 <li class="border-bottom">
                     <p>我的账户</p>
                     <div>
-                        <div>
-                            <img src="../../assets/images/my-img/3-1.png" alt="">
+                        <div @click="discount">
+                            <img src="@/assets/images/my-img/3-1.png" alt="">
                             <span>优惠券</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/3-2.png" alt="">
+                            <img src="@/assets/images/my-img/3-2.png" alt="">
                             <span>学习卡</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/3-3.png" alt="">
+                            <img src="@/assets/images/my-img/3-3.png" alt="">
                             <span>会员</span>
                         </div>
                     </div>
@@ -95,19 +95,19 @@
                     <p>自助服务</p>
                     <div>
                         <div>
-                            <img src="../../assets/images/my-img/4-1.png" alt="">
+                            <img src="@/assets/images/my-img/4-1.png" alt="">
                             <span>我的消息</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/4-2.png" alt="">
+                            <img src="@/assets/images/my-img/4-2.png" alt="">
                             <span>意见反馈</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/4-3.png" alt="">
+                            <img src="@/assets/images/my-img/4-3.png" alt="">
                             <span>在线服务</span>
                         </div>
                         <div>
-                            <img src="../../assets/images/my-img/4-4.png" alt="">
+                            <img src="@/assets/images/my-img/4-4.png" alt="">
                             <span>设置</span>
                         </div>
                     </div>
@@ -123,7 +123,11 @@ export default {
         return {};
     },
     mounted() {},
-    methods: {},
+    methods: {
+        discount() {
+            this.$router.push({path:'/discount'})
+        }
+    },
 };
 </script>
 
@@ -137,7 +141,7 @@ export default {
             width: 100%;
             height: 4.35rem;
             position: relative;
-            background: url(../../assets/images/my-img/my-top.png) no-repeat;
+            background: url(../../../assets/images/my-img/my-top.png) no-repeat;
             background-size: 100%;
             background-color: #fff;
             .conter{
