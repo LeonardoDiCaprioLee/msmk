@@ -7,8 +7,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    token:'',
   },
   mutations: {
+    login(state,user){
+        state.token = user
+    }
   },
   actions: {
   },

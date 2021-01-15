@@ -15,6 +15,11 @@ const routes = [
     component: () => import("../views/jie/details")
   },
   {
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/xiang/login/Login.vue")
+  },
+  {
     path: '/home',
     name: 'Home',
     component: () => import('../views/Home.vue'),
@@ -25,9 +30,13 @@ const routes = [
       ...jun,
     ]
   },
-
-
+  {
+    path: "/discount",
+    name: "Discount",
+    component: () => import("@/views/xiang/my/Discount.vue")
+  },
 ]
+
 const router = new VueRouter({
     routes
   })
