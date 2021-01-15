@@ -19,7 +19,6 @@ import currMain from "./curr_main"
 export default {
     data(){
         return {
-
         } 
     },
     methods : {},

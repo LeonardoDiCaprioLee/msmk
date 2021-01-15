@@ -47,7 +47,7 @@
                 <li class="border-bottom">
                     <p>课程相关</p>
                     <div>
-                        <div>
+                        <div @click="$router.push('/follow')">
                             <img src="@/assets/images/my-img/1-1.png" alt="">
                             <span>关注的老师</span>
                         </div>

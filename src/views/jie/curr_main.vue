@@ -1,11 +1,12 @@
 <template>
   <div class="currMain">
-    <currItem :currData="list" ></currItem>
+    <currItem :currData="chooseGrades"></currItem>
   </div>
 </template>
 
 <script>
 import { getCurrData } from "../../utils/api/index";
+import eventBus from "./eventBus";
 import currItem from "@/components/currenItem";
 export default {
   data() {
@@ -42,7 +43,8 @@ export default {
         },
         {
           id: 253,
-          title: "每时每课-初一英语-want、think about以及询问某人喜欢某物、三餐等知识点",
+          title:
+            "每时每课-初一英语-want、think about以及询问某人喜欢某物、三餐等知识点",
           price: 0,
           course_type: 5,
           course_classify_id: 36,
@@ -124,22 +126,173 @@ export default {
           ],
           brows_num: 9,
         },
+        {
+          id: 252,
+          title: "每时每课-初二英语-一般现在时中have的用法知识点",
+          price: 3,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 11,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 3,
+          browse_base: 0,
+          browse_num: 9,
+          sales_num: 12,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "李青",
+              course_basis_id: 247,
+            },
+          ],
+          brows_num: 9,
+        },
+        {
+          id: 249,
+          title: "每时每课-初二英语-一般现在时中have的用法知识点",
+          price: 3,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 11,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 3,
+          browse_base: 0,
+          browse_num: 9,
+          sales_num: 12,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "李青",
+              course_basis_id: 247,
+            },
+          ],
+          brows_num: 9,
+        },
+        {
+          id: 255,
+          title: "每时每课-初二英语-一般现在时中have的用法知识点",
+          price: 3,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 11,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 3,
+          browse_base: 0,
+          browse_num: 9,
+          sales_num: 12,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "李青",
+              course_basis_id: 247,
+            },
+          ],
+          brows_num: 9,
+        },
+        {
+          id: 1133,
+          title: "每时每课-初三数学-一般现在时中have的用法知识点",
+          price: 3,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 11,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 3,
+          browse_base: 0,
+          browse_num: 9,
+          sales_num: 12,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "李青",
+              course_basis_id: 247,
+            },
+          ],
+          brows_num: 9,
+        },
+        {
+          id: 1122,
+          title: "每时每课-初三数学-一般现在时中have的用法知识点",
+          price: 3,
+          course_type: 5,
+          course_classify_id: 36,
+          sales_base: 11,
+          start_play_date: 0,
+          end_play_date: 0,
+          underlined_price: 3,
+          browse_base: 0,
+          browse_num: 9,
+          sales_num: 12,
+          total_periods: 1,
+          has_buy: 0,
+          is_vip: 0,
+          is_has_coupon: 0,
+          teachers_list: [
+            {
+              id: 194,
+              teacher_avatar:
+                "https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
+              teacher_name: "王麻子",
+              course_basis_id: 247,
+            },
+          ],
+          brows_num: 9,
+        },
       ],
     };
   },
-  methods: {
-    
+  methods: {},
+  computed: {
+    chooseGrades() {
+      let arr = [];
+      let chooseGrades = this.$store.state.chooseGrades;
+      let str = chooseGrades.join("");
+      this.list.forEach((item) => {
+        // for (let i = 0; i < chooseGrades.length; i++) {
+          if (item.title.indexOf(str) > -1) {
+            arr.push(item);
+        // }
+      }
+      });
+      return arr;
+    },
   },
-  computed: {},
   filters: {},
   components: {
     currItem,
   },
   directives: {},
   mounted() {},
-  created() {
-    getCurrData();
-  },
+  created() {},
+  updated() {},
 };
 </script>
 

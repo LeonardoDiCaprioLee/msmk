@@ -1,6 +1,6 @@
 <template>
     <div class='login'>
-        <p class="header"><van-icon name="arrow-left" size="20"/></p>
+        <p class="header"><van-icon name="arrow-left" size="20" @click="$router.go(-1)"/></p>
         <div class="content">
             <img src="@/assets/images/login-img/logo.png" alt="">
             <div class="one">

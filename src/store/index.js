@@ -7,7 +7,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    token:'',
+    // 分类数据筛选
+    chooseGrades: [],
+    token: '',
   },
   mutations: {
     login(state,user){
@@ -16,13 +18,18 @@ export default new Vuex.Store({
     },
     out(state){ // 退出登录
       state.token = ''
-    }
+    },
+    // 分类数据筛选
+    chooseGrades(state, arr) {
+      state.chooseGrades = arr;
+      console.log(state.chooseGrades)
+    },
   },
   actions: {
   },
   modules: {
   },
-  plugins:[
+  plugins: [
     persist()
   ]
 })

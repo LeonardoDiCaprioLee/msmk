@@ -157,7 +157,7 @@ body,html,#app{
 
 .van-popup-show{
     width: 80%;
-    height: 50%;
+    height: 8rem;
     border-radius: 5%;
     background-image: url('../img/jun/fj.png');
     background-repeat: repeat-x;
@@ -189,6 +189,60 @@ body,html,#app{
         float: left;
         font-size: 0.24rem;
         color: white;
-        padding-left: 0.3rem;
+        padding-left: 0
     }
 }
+
+
+// 错题练习
+.Wrong{
+    float: left;
+    width: 95%;
+    height: 4rem;
+    background: white;
+  margin: 0.2rem;
+  border-radius: 2%;
+  font-size: 0.24rem;
+  .Wrong-div{
+      display: flex;
+      justify-content: space-around;
+   
+  } 
+  .Wrong-but{
+        float: right;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 1.5rem;
+        height: 0.8rem;
+        border-radius: 1rem;
+        border: purple 0.05rem solid;
+        color: purple;
+        background: none;
+    }
+}
+.Wrong1{
+    float: left;
+    width: 95%;
+    height: 3rem;
+    background: white;
+  margin: 0.2rem;
+  border-radius: 2%;
+  font-size: 0.24rem;
+  .Wrong-div{
+      display: flex;
+      justify-content: space-around;
+   
+  } 
+  .Wrong-but{
+        float: right;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        width: 1.5rem;
+        height: 0.8rem;
+        border-radius: 1rem;
+        border: purple 0.05rem solid;
+        color: purple;
+        background: none;
+    }
+}
+// 错题练习

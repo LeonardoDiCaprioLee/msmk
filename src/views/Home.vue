@@ -9,6 +9,11 @@
       <van-tabbar-item icon="setting-o" to="/exercise">练习</van-tabbar-item>
       <van-tabbar-item icon="setting-o" to="/my">我的</van-tabbar-item>
     </van-tabbar>
+        <!-- 定位联系我们 -->
+    <div class="contact" @click="$router.push('/message')">
+      <van-icon name="envelop-o" />
+    </div>
+    <!-- 定位联系我们 -->
   </div>
 </template>
 
