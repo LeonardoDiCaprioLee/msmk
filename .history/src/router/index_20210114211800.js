@@ -4,16 +4,18 @@ import lixiang from './xiang/index.js'
 import whjRouter from "./whj_router"
 Vue.use(VueRouter)
 import jun from './jun'
-import jun1 from './jun1'
 const routes = [
   {
     path: '/',
     redirect: '/home'
+<<<<<<< HEAD
   },
   {
     path: "/details",
     name: "Details",
     component: () => import("../views/jie/details")
+=======
+>>>>>>> e132c30f1bb55a3b6d5d92d2218d7dff352a041f
   },
   {
     path: '/home',
@@ -24,12 +26,9 @@ const routes = [
       ...lixiang,
       ...whjRouter,
       ...jun,
-    ],
-   
+    ]
   },
-  // 外部路由
- ...jun1
-  // 外部路由
+
 
 ]
 const router = new VueRouter({

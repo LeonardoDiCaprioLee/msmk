@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="currItem" v-for="item in currData" :key="item.id">
+    <div class="currItem" v-for="item in currData" :key="item.id" @click="goDetiles">
       <!-- 标题 -->
       <p class="title">
         <font>{{ item.title }}</font>
@@ -45,7 +45,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    goDetiles(){
+      this.$router.push("/details")
+    }
+  },
   computed: {},
   filters: {},
   components: {},

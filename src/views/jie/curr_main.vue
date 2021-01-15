@@ -1,44 +1,12 @@
 <template>
   <div class="currMain">
-    <div class="currItem">
-      <!-- 标题 -->
-      <p class="title">
-        <font>李老师开课了...</font>
-      </p>
-      <!-- 时间 -->
-      <div class="time">
-        <p>
-          <van-icon name="underway-o" />
-          <span>&emsp;03月16日 18:30</span>
-          <span> ~ </span>
-          <span>03月22日 20:30</span>
-          <span> | </span>
-          <span>共8课时</span>
-        </p>
-      </div>
-      <!-- 任课老师 -->
-      <div class="teacher border-bottom">
-        <div class="teacher-item">
-          <img
-            src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg"
-            alt=""
-          />
-          <span>李想</span>
-        </div>
-      </div>
-      <!-- 价格 -->
-      <div class="info">
-        <span class="person">1777人已报名</span>
-        <span class="free">免费</span>
-      </div>
-    </div>
-    <qwe :currData="list"></qwe>
+    <currItem :currData="list" ></currItem>
   </div>
 </template>
 
 <script>
 import { getCurrData } from "../../utils/api/index";
-import qwe from "@/components/currenItem";
+import currItem from "@/components/currenItem";
 export default {
   data() {
     return {
@@ -159,11 +127,13 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    
+  },
   computed: {},
   filters: {},
   components: {
-    qwe,
+    currItem,
   },
   directives: {},
   mounted() {},
@@ -175,7 +145,7 @@ export default {
 
 <style lang="scss" scoped>
 .currMain {
-  padding: 0.3rem;
+  padding: 0.3rem 0.3rem 1rem;
   overflow: scroll;
   font: inherit;
   // 渲染的div
