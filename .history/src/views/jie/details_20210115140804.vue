@@ -11,8 +11,7 @@
       <!-- 老师课堂 -->
       <div class="cd-info">
         <p class="title">
-          <!-- {{ detailsData.teachers_list[0].teacher_name }} -->
-          璐璐老师9号...
+          {{ detailsData.teachers_list[0].teacher_name }}老师9号...
         </p>
         <p class="info-free">
           <span v-if="detailsData.underlined_price <= 0">免费</span>
@@ -28,11 +27,8 @@
         <strong>教师团队</strong>
         <ul>
           <li>
-            <!-- {{detailsData.teachers_list[0].teacher_avatar}} -->
-            <!-- <img :src="detailsData.teachers_list[0].teacher_avatar" alt="" /> -->
-            <!-- <span>{{ detailsData.teachers_list[0].teacher_name }}</span> -->
-            <img src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg" alt="">
-            <span>璐璐</span>
+            <img :src="detailsData.teachers_list[0].teacher_avatar" alt="" />
+            <span>{{ detailsData.teachers_list[0].teacher_name }}</span>
           </li>
         </ul>
       </div>
@@ -52,8 +48,8 @@
       <!-- 课程评价 -->
       <div class="cd-tro">
         <strong>课程评价</strong>
-        <h2 v-show="!$store.state.token">登录后查看</h2>
-        <img src="@/assets/img/jie/pingjia.jpg" alt=""  v-show="$store.state.token"/>
+        <h2>登录后查看</h2>
+        <img src="@/assets/img/jie/pingjia.jpg" alt="" />
       </div>
     </div>
 
@@ -79,12 +75,7 @@ export default {
       //   如果用户没有登录 那么进行提示
       // console.log(!this.detailsData.has_buy)
       if (this.$store.state.token == "") {
-        this.$toast.loading({
-          message: "正在跳转登录页面...",
-          forbidClick: true,
-          duration : 100
-        });
-        return this.$router.push("/login")
+        return this.$toast.fail("请先登录,在重试");
       }
       if (!this.detailsData.has_buy) {
         //   如果已经报名提示用户已经报名
@@ -107,7 +98,7 @@ export default {
   components: {},
   directives: {},
   mounted() {
-    // console.log(this.detailsData);
+    console.log(this.detailsData);
     this.detailsData = this.$route.query;
     //   console.log(this.$route.query)
     //   console.log(this.detailsData.teachers_list[0].teacher_name)

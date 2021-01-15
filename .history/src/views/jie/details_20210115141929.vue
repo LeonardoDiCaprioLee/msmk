@@ -82,7 +82,7 @@ export default {
         this.$toast.loading({
           message: "正在跳转登录页面...",
           forbidClick: true,
-          duration : 100
+          duration : 1000
         });
         return this.$router.push("/login")
       }

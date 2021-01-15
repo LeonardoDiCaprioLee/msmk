@@ -82,9 +82,9 @@ export default {
         this.$toast.loading({
           message: "正在跳转登录页面...",
           forbidClick: true,
-          duration : 100
+          duration : 1000
         });
-        return this.$router.push("/login")
+        this.$router.push("/login")
       }
       if (!this.detailsData.has_buy) {
         //   如果已经报名提示用户已经报名
@@ -109,6 +109,7 @@ export default {
   mounted() {
     // console.log(this.detailsData);
     this.detailsData = this.$route.query;
+    console.log(document.)
     //   console.log(this.$route.query)
     //   console.log(this.detailsData.teachers_list[0].teacher_name)
   },

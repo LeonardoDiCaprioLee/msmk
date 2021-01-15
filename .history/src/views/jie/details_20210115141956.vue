@@ -79,11 +79,7 @@ export default {
       //   如果用户没有登录 那么进行提示
       // console.log(!this.detailsData.has_buy)
       if (this.$store.state.token == "") {
-        this.$toast.loading({
-          message: "正在跳转登录页面...",
-          forbidClick: true,
-          duration : 100
-        });
+        
         return this.$router.push("/login")
       }
       if (!this.detailsData.has_buy) {
