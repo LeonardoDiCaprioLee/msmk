@@ -4,6 +4,7 @@ import lixiang from './xiang/index.js'
 import whjRouter from "./whj_router"
 Vue.use(VueRouter)
 import jun from './jun'
+import jun1 from './jun1'
 const routes = [
   {
     path: '/',
@@ -28,13 +29,18 @@ const routes = [
       ...lixiang,
       ...whjRouter,
       ...jun,
-    ]
+    ],
+   
   },
   {
     path: "/discount",
     name: "Discount",
     component: () => import("@/views/xiang/my/Discount.vue")
   },
+  // 外部路由
+ ...jun1
+  // 外部路由
+
 ]
 
 const router = new VueRouter({
