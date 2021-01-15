@@ -17,17 +17,16 @@ export default new Vuex.Store({
       state.chooseGrades = arr;
       console.log(state.chooseGrades)
     },
-    mutations: {
-      login(state, user) {
-        state.token = user
-      }
-    },
-    actions: {
-    },
-    modules: {
-    },
-    plugins: [
-      persist()
-    ]
-  }
+
+    login(state, user) {
+      state.token = user
+    }
+  },
+  actions: {
+  },
+  modules: {
+  },
+  plugins: [
+    persist()
+  ]
 })
