@@ -9,13 +9,13 @@
           </div>
           <p>考点专练</p>
         </li>
-        <li>
+        <li @click="$router.push('/rollUp')">
           <div>
             <img src="../../assets/images/exercise-img/1-2.png" alt />
           </div>
           <p>考卷练习</p>
         </li>
-        <li>
+        <li @click="$router.push('/simulation')">
           <div>
             <img src="../../assets/images/exercise-img/1-3.png" alt />
           </div>
@@ -40,6 +40,7 @@
           <p>习题收藏</p>
         </li>
       </ul>
+    </div>
     </div>
 </template>
 
