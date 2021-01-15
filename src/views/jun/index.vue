@@ -76,11 +76,6 @@
     </div>
     <div style="width:100%;height:1rem;margin-top:1rem">
     </div>
-    <!-- 定位联系我们 -->
-    <div class="contact" @click="$router.push('/message')">
-      <van-icon name="envelop-o" />
-    </div>
-    <!-- 定位联系我们 -->
     <!-- 登录弹框 -->
     <van-popup class="van-popup-show" v-model="show">
       <p class="show-x" @click="show=false">X</p>

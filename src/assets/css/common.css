@@ -26,7 +26,7 @@ html,body{
     content: '';
     position: absolute;
     width: 200%;
-    height: 10px;
+    height: 1px;
     background-color: #999;
     transform: scale(0.5);
     top: 0;

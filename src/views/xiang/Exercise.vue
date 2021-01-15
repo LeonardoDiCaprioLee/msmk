@@ -9,11 +9,11 @@
                     <div><img src="../../assets/images/exercise-img/1-1.png" alt=""></div>
                     <p>考点专练</p>
                 </li>
-                <li>
+                <li @click="$router.push('/rollUp')">
                     <div><img src="../../assets/images/exercise-img/1-2.png" alt=""></div>
-                    <p>考卷练习</p>
+                    <p>套卷练习</p>
                 </li>
-                <li>
+                <li @click="$router.push('simulation')">
                     <div><img src="../../assets/images/exercise-img/1-3.png" alt=""></div>
                     <p>仿真模拟</p>
                 </li>
@@ -21,7 +21,7 @@
                     <div><img src="../../assets/images/exercise-img/1-4.png" alt=""></div>
                     <p>错题练习</p>
                 </li>
-                <li>
+                <li @click="$router.push('Evaluation')">
                     <div><img src="../../assets/images/exercise-img/1-5.png" alt=""></div>
                     <p>测评记录</p>
                 </li>
