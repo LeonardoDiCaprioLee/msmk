@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div class='exercise'>
         <van-nav-bar
         title="练习"
@@ -48,6 +49,49 @@
                 <p>暂无模考安排，敬请期待</p>
             </div>
         </div>
+=======
+  <div class="exercise">
+    <van-nav-bar title="练习" />
+    <div class="sex">
+      <ul>
+        <li  @click="$router.push('/site')">
+          <div>
+            <img src="../../assets/images/exercise-img/1-1.png" alt />
+          </div>
+          <p>考点专练</p>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/images/exercise-img/1-2.png" alt />
+          </div>
+          <p>考卷练习</p>
+        </li>
+        <li>
+          <div>
+            <img src="../../assets/images/exercise-img/1-3.png" alt />
+          </div>
+          <p>仿真模拟</p>
+        </li>
+        <li @click="$router.push('/Wrong')">
+          <div>
+            <img src="../../assets/images/exercise-img/1-4.png" alt />
+          </div>
+          <p>错题练习</p>
+        </li>
+        <li @click="$router.push('/Evaluation')">
+          <div>
+            <img src="../../assets/images/exercise-img/1-5.png" alt />
+          </div>
+          <p>测评记录</p>
+        </li>
+        <li @click="$router.push('/Collection')">
+          <div>
+            <img src="../../assets/images/exercise-img/1-6.png" alt />
+          </div>
+          <p>习题收藏</p>
+        </li>
+      </ul>
+>>>>>>> 18a2d772249318c9af0fcbd16066c51f6abb4338
     </div>
 </template>
 
