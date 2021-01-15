@@ -10,15 +10,15 @@
     <!-- 小框框 -->
     <div class="index-kinds">
       <ul>
-        <li>
+        <li @click="jump_router">
           <img src="@/assets/img/jun/l.png" alt />
           <p style="font-size:0.2rem">特色课</p>
         </li>
-        <li>
+        <li @click="jump_router">
           <img src="@/assets/img/jun/lv.png" alt />
           <p style="font-size:0.2rem">一对一辅导</p>
         </li>
-        <li>
+        <li @click="jump_rili">
           <img src="@/assets/img/jun/h.png" alt />
           <p style="font-size:0.2rem">学习日历</p>
         </li>
@@ -35,6 +35,7 @@
         class="oto-content"
         v-for="(item2,index2) in item.list"
         :key="index2"
+        @click="jump_router"
       >
         <div class="oc-item">
           <img class :src="item2.teacher_avatar" alt />
@@ -51,10 +52,11 @@
         v-for="(item3,index3) in item.list"
         v-show="item.channel_info.sort!=1&&item.channel_info.sort!=4"
         :key="index3+'.'"
+        @click="jump_router"
       >
         <div class="box-f-z">
           <p
-            style="font-size:0.26rem;padding-top:0.3rem;padding-left:0.26rem;float:left"
+            style="font-size:0.35rem;padding-top:0.25rem;padding-left:0.26rem;float:left"
           >{{item3.title}}</p>
           <span style="font-size:0.2rem;float:left;padding-top:0.22rem">共{{item3.total_periods}}课时</span>
           <ul v-for="(item4,index4) in item3.teachers_list" :key="index4" class="box-f-ul1">
@@ -72,6 +74,21 @@
       </div>
       <!-- 方盒子 -->
     </div>
+    <div style="width:100%;height:1rem;margin-top:1rem">
+    </div>
+    <!-- 定位联系我们 -->
+    <div class="contact" @click="$router.push('/message')">
+      <van-icon name="envelop-o" />
+    </div>
+    <!-- 定位联系我们 -->
+    <!-- 登录弹框 -->
+    <van-popup class="van-popup-show" v-model="show">
+      <p class="show-x" @click="show=false">X</p>
+      <p style="margin-top:5.5rem;font-size:0.4rem;text-align:center;font-weight:bold;">赶紧登陆一下吧</p>
+      <p style="font-size:0.24rem;text-align:center;margin-top:0.32rem;">立即预约一对一辅导,浏览更多视频课程~</p>
+      <van-button  style="width:80%;" @click="$router.push('/my')">立即登录</van-button>
+    </van-popup>
+    <!-- 登录弹框 -->
   </div>
 </template>
 
@@ -92,7 +109,8 @@ export default {
     return {
       // 轮播图
       banner: [],
-      arr: []
+      arr: [],
+      show: false
     };
   },
   mounted() {
@@ -107,7 +125,26 @@ export default {
     pubox
   },
   computed: {},
-  methods: {}
+  methods: {
+    // 跳转路由
+    jump_router(){
+      if(this.$store.state.token!=null){
+        this.$router.push('/curriculum')
+        this.show=false
+      }else{
+        this.show=true
+      }
+    },
+    jump_rili(){
+
+       if(this.$store.state.token!=null){
+        this.$router.push('/calendar')
+        this.show=false
+      }else{
+        this.show=true
+      }
+    }
+  }
 };
 </script>
 
