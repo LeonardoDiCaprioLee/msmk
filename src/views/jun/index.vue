@@ -114,7 +114,7 @@ export default {
       // console.log(res);
     });
     this.arr = arr[0].data;
-    console.log(this.arr);
+    // console.log(this.arr);
   },
   components: {
     pubox
