@@ -1,7 +1,8 @@
 import axios from 'axios';
-import Vue from 'vue'
+// import Vue from 'vue'
 // import loading from "@/components"
 // Vue.use(loading)
+import {Guid} from './guid'
 const server = axios.create({
     baseURL: "http://120.53.31.103:84",
     timeout: 10000 // 请求超时的时间
@@ -13,8 +14,14 @@ server.interceptors.request.use(config => {
     config.headers = {
         deviceType: "H5"
     }
+    let ID = Guid.NewGuid().ToString('D')
+    window.sessionStorage.setItem('DeviceID',ID)
     if (localStorage.getItem('token')) {
-        config.headers.token = localStorage.getItem('token');
+        config.headers = {
+            DeviceType: 'H5',
+            DeviceID: window.sessionStorage.getItem('DeviceID',ID),
+            Authorization:`Bearer ${localStorage.getItem('token')}`
+        }
     }
 
 

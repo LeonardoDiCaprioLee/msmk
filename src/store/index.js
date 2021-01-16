@@ -9,15 +9,10 @@ export default new Vuex.Store({
   state: {
     // 分类数据筛选
     chooseGrades: [],
-    token: '',
   },
   mutations: {
-    login(state,user){
-        // 登录token存储
-        state.token = user
-    },
     out(state){ // 退出登录
-      state.token = ''
+      localStorage.setItem('token','')
     },
     // 分类数据筛选
     chooseGrades(state, arr) {

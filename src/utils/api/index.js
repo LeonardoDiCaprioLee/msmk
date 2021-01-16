@@ -11,24 +11,8 @@ import server from '../server/http';
 // })
 
 // 课程数据
-const course = async function(){
-    let { data } = await server.post('/api/app/teacher/mainCourse',{limit : 10,page : 1});
-    return Promise.resolve(data)
-}
-const comment = async function(){
-    let { data } = await server.post('/api/app/teacher/comment',{page : 1,limit : 10,teacher_id:254});
-    return Promise.resolve(data)
-}
-const courseInfo = async function(){
-    let { data } = await server.get('/api/app/courseInfo/basis_id=189');
-    return Promise.resolve(data)
-}
-const collect = async function(){
-    let { data } = await server.get('/api/app/collect?type=1');
-    return Promise.resolve(data)
-}
 const myStudy = async function(){
-    let { data } = await server.get('/api/app/myStudy/1');
+    let { data } = await server.post('/api/app/order/downOrder');
     return Promise.resolve(data)
 }
 
@@ -95,10 +79,6 @@ export {
     getBanners,
     // getCurrData,
     login,
-    course,
-    comment,
-    courseInfo,
-    collect,
     myStudy,
     BindingNumber,
     ResetPasss

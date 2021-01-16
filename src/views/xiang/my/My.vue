@@ -125,22 +125,8 @@ export default {
         };
     },
     mounted() {
-        this.name()
     },
     methods: {
-        // 用户名截取
-        name() {
-            
-            let arr = this.$store.state.token.split('');
-            let arr2 = arr.splice(0,arr.length-1)
-            for(var item in arr2){
-                if(item>2&&item<8){
-                    arr2[item] = '*'
-                }
-            }
-            this.tel = arr2.join('')
-            console.log(this.tel);
-        },
         // 跳转优惠券页面
         discount() {
             this.$router.push({path:'/discount'})
