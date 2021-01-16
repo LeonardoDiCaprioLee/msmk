@@ -1,5 +1,21 @@
 import server from '../server/http';
 
+// 获取数据
+// const getBanners = async function() {
+//     var {data} = await server.get('/small4/banner/list')
+//     return Promise.resolve(data.data);
+// }
+// import {getBanners} from ''
+// getBanners().then(res=>{
+//      this.list = res
+// })
+
+// 课程数据
+const myStudy = async function(){
+    let { data } = await server.post('/api/app/order/downOrder');
+    return Promise.resolve(data)
+}
+
 // 首页轮播图
 const getBanners = async function () {
     // let list = [
@@ -47,8 +63,12 @@ const get_indexlist=async function(){
 
 // 登录接口
 
+
 // const login = async function () {
 //     var { data } = await server.get('/small4/banner/list')
+// const login = async function() {
+//     var {data} = await server.get('/small4/banner/list',{limit : 10})
+
 // }
 const login = async function(obj) {
     var {data} = await server.post('/api/app/login?mobile='+obj.mobile+'&password='+obj.password+'&type='+obj.type)
@@ -71,6 +91,11 @@ const Personal = async function() {
     var {data} = await server.get('/api/app/userInfo')
     return Promise.resolve(data.data);
 }
+// 个人信息修改接口
+// const Personal = async function() {
+//     var {data} = await server.get('/api/app/user')
+//     return Promise.resolve(data.data);
+// }
 
 
 // 首页列表数据详情
@@ -86,6 +111,7 @@ export {
 
     get_indexlist,
     indexdettails,
+    myStudy,
     BindingNumber,
     ResetPasss,
     Personal

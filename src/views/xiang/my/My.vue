@@ -5,7 +5,7 @@
             <div class="conter">
                 <div class="top">
                     <div>
-                        <img :src="personal.avatar" alt="">
+                        <img :src="personal.avatar" alt="" @click="setUser">
                         <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
                     <span class="tel">{{personal.nickname}}<img src="@/assets/images/my-img/open.png" alt=""></span>
@@ -81,7 +81,7 @@
                             <img src="@/assets/images/my-img/3-1.png" alt="">
                             <span>优惠券</span>
                         </div>
-                        <div>
+                        <div @click="$router.push('/study')">
                             <img src="@/assets/images/my-img/3-2.png" alt="">
                             <span>学习卡</span>
                         </div>
@@ -128,7 +128,6 @@ export default {
     },
     mounted() {
         Personal().then(res=>{
-            console.log(res);
             this.personal = res
         })
     },
@@ -144,6 +143,9 @@ export default {
         // 特色课
         features() {
 
+        },
+        setUser(){
+            this.$router.push({path:'/setUser',query:{user:this.personal}})
         }
     },
     // 我的页面鉴权

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { getCurrData } from "../../utils/api/index";
+import { course,comment,courseInfo,collect,myStudy } from "../../utils/api/index";
 import eventBus from "./eventBus";
 import currItem from "@/components/currenItem";
 export default {
@@ -290,7 +290,17 @@ export default {
     currItem,
   },
   directives: {},
-  mounted() {},
+  mounted() {
+    myStudy().then(res => {
+      console.log(res)
+    });
+    // comment().then(res => {
+    //   console.log(res)
+    // });
+    // courseInfo().then(res => {
+    //   console.log(res)
+    // })
+  },
   created() {},
   updated() {},
 };

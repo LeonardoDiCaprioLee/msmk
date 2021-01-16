@@ -29,4 +29,16 @@ export default [
         name : "follow",
         component : () => import("../views/jie/follow")
     },
+    // 学习卡路由
+    {
+        path : "/study",
+        name : "study",
+        component : () => import("../views/jie/study")
+    },
+    // 学习卡兑换
+    {
+        path : "/exchange",
+        name : "exchange",
+        component : () => import("../views/jie/exchange")
+    },
 ]

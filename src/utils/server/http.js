@@ -14,6 +14,9 @@ server.interceptors.request.use(config => {
         deviceType: "H5"
     }
     // Vue.$loading.show();
+    config.headers = {
+        deviceType: "H5"
+    }
     let ID = Guid.NewGuid().ToString('D')
     window.sessionStorage.setItem('DeviceID',ID)
     if (localStorage.getItem('token')) {
