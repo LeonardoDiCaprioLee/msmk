@@ -6,7 +6,7 @@
             <div class="one">
                 <van-icon name="friends-o" size="30"/>
                 <p class="border-bottom">
-                    <input type="text" v-model="tel" placeholder="请输入手机号">
+                    <input type="text" v-model="obj.mobile" placeholder="请输入手机号">
                     <button @click="test" v-if="show == true">获取验证码</button>
                     <button v-else class="gray">{{outTime}}s</button>
                 </p>
@@ -14,7 +14,7 @@
             <div class="tow">
                 <van-icon name="friends-o"  size="30"/>
                 <p class="border-bottom">
-                    <input type="text" v-model="passTest" placeholder="请输入验证码">
+                    <input type="text" v-model="obj.sms_code" placeholder="请输入验证码">
                 </p>
             </div>
             <div class="log_btn">
@@ -48,39 +48,48 @@
 </template>
 
 <script>
+import {BindingNumber} from '@/utils/api/index'
 export default {
     data() {
         return {
             tel:'',
             passTest:'',
             show:true,
-            outTime:60
+            outTime:60,
+            obj:{
+                mobile:'',
+                sms_type:'login'
+            }
         };
     },
-    mounted() {},
+    mounted() {
+    },
     methods: {
         password(){
             this.$router.push({path:'/login'})
         },
         test(){
-            if(this.tel != '') {
-                this.show = false;
-                let arr = [1,2,3,4,5,6,7,8,9,0]
-                let num = ''
-                for(var i=0;i<4;i++){
-                    num+=parseInt(Math.random()*arr.length)
-                }
-                setTimeout(()=>{
-                    this.passTest = num 
-                }, 5000)
-                setInterval(()=>{
-                    if(this.passTest==''){
-                        this.outTime > 0 ? this.outTime-- : this.outTime = 0
-                    }else {
-                        return 
-                    }
-                }, 1000)
-            }
+            BindingNumber(this.obj).then(res=>{
+                console.log(res);
+            })
+            // if(this.tel != '') {
+            //     this.show = false;
+            //     let arr = [1,2,3,4,5,6,7,8,9,0]
+            //     let num = ''
+            //     for(var i=0;i<4;i++){
+            //         num+=parseInt(Math.random()*arr.length)
+            //     }
+            //     setTimeout(()=>{
+            //         this.passTest = num 
+            //     }, 5000)
+            //     setInterval(()=>{
+            //         if(this.passTest==''){
+            //             this.outTime > 0 ? this.outTime-- : this.outTime = 0
+            //         }else {
+            //             return 
+            //         }
+            //     }, 1000)
+            // }
         },
         login() {
             if(this.tel != '' && this.passTest != ''){

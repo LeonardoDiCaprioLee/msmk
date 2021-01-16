@@ -50,14 +50,27 @@ const getBanners = async function () {
 // }
 
 // 登录接口
-const login = async function() {
-    var {data} = await server.get('/small4/banner/list')
+const login = async function(obj) {
+    var {data} = await server.post('/api/app/login?mobile='+obj.mobile+'&password='+obj.password+'&type='+obj.type)
+    return Promise.resolve(data);
+}
+// 注册接口
+const BindingNumber = async function(obj) {
+    var {data} = await server.post('/api/app/smsCode?mobile='+obj.mobile+'&sms_type='+obj.sms_type)
+    console.log(data);
     return Promise.resolve(data.data);
 }
-
+// 修改密码接口
+const ResetPasss = async function(obj) {
+    var {data} = await server.post('/api/app/password')
+    console.log(data);
+    return Promise.resolve(data.data);
+}
 
 export {
     getBanners,
     // getCurrData,
-    login
+    login,
+    BindingNumber,
+    ResetPasss
 }
