@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { ResetPasss } from '@/utils/api/index'
 export default {
     data() {
         return {
@@ -27,7 +28,11 @@ export default {
             show:true
         };
     },
-    mounted() {},
+    mounted() {
+        ResetPasss().then(res=>{
+            console.log(res);
+        })
+    },
     methods: {
         onClickLeft(){
             this.$router.go(-1)
