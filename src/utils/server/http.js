@@ -10,11 +10,14 @@ const server = axios.create({
 // 请求拦截
 server.interceptors.request.use(config => {
     // Vue.$loading.show();
+    config.headers = {
+        deviceType: "H5"
+    }
     if (localStorage.getItem('token')) {
         config.headers.token = localStorage.getItem('token');
     }
 
-    
+
     return config
 }, err => {
     console.log(err);

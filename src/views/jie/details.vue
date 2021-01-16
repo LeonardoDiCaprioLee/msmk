@@ -107,8 +107,9 @@ export default {
   components: {},
   directives: {},
   mounted() {
-    // console.log(this.detailsData);
     this.detailsData = this.$route.query;
+    console.log(this.detailsData);
+
     //   console.log(this.$route.query)
     //   console.log(this.detailsData.teachers_list[0].teacher_name)
   },

@@ -10,6 +10,27 @@ import server from '../server/http';
 //      this.list = res
 // })
 
+// 课程数据
+const course = async function(){
+    let { data } = await server.post('/api/app/teacher/mainCourse',{limit : 10,page : 1});
+    return Promise.resolve(data)
+}
+const comment = async function(){
+    let { data } = await server.post('/api/app/teacher/comment',{page : 1,limit : 10,teacher_id:254});
+    return Promise.resolve(data)
+}
+const courseInfo = async function(){
+    let { data } = await server.get('/api/app/courseInfo/basis_id=189');
+    return Promise.resolve(data)
+}
+const collect = async function(){
+    let { data } = await server.get('/api/app/collect?type=1');
+    return Promise.resolve(data)
+}
+const myStudy = async function(){
+    let { data } = await server.get('/api/app/myStudy/2');
+    return Promise.resolve(data)
+}
 
 // 首页轮播图
 const getBanners = async function () {
@@ -51,7 +72,7 @@ const getBanners = async function () {
 
 // 登录接口
 const login = async function() {
-    var {data} = await server.get('/small4/banner/list')
+    var {data} = await server.get('/small4/banner/list',{limit : 10})
     return Promise.resolve(data.data);
 }
 
@@ -59,5 +80,10 @@ const login = async function() {
 export {
     getBanners,
     // getCurrData,
-    login
+    login,
+    course,
+    comment,
+    courseInfo,
+    collect,
+    myStudy
 }
