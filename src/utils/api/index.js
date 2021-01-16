@@ -55,6 +55,11 @@ const Personal = async function() {
     var {data} = await server.get('/api/app/userInfo')
     return Promise.resolve(data.data);
 }
+// 个人信息修改接口
+// const Personal = async function() {
+//     var {data} = await server.get('/api/app/user')
+//     return Promise.resolve(data.data);
+// }
 
 
 export {

@@ -39,6 +39,11 @@ const add = [
       name: "Sex",
       component: () => import("@/views/xiang/login/Sex.vue")
     },
+    { // 用户信息路由
+      path: "/setUser",
+      name: "SetUser",
+      component: () => import("@/views/xiang/my/SetUser.vue")
+    },
     
 ]
 export {
