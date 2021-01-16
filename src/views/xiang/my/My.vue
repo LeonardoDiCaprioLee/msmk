@@ -8,11 +8,11 @@
                         <img src="@/assets/images/my-img/head.jpg" alt="">
                         <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
-                    <span class="tel">{{$store.state.token}}<img src="@/assets/images/my-img/open.png" alt=""></span>
+                    <span class="tel">{{tel}}<img src="@/assets/images/my-img/open.png" alt=""></span>
                     <span>去约课</span>
                 </div>
                 <ul>
-                    <li>
+                    <li @click="features">
                         <span>0</span>
                         <span>我的特色课</span>
                         <span>已购特色课程的学习</span>
@@ -120,10 +120,27 @@
 <script>
 export default {
     data() {
-        return {};
+        return {
+            tel:Number
+        };
     },
-    mounted() {},
+    mounted() {
+        this.name()
+    },
     methods: {
+        // 用户名截取
+        name() {
+            
+            let arr = this.$store.state.token.split('');
+            let arr2 = arr.splice(0,arr.length-1)
+            for(var item in arr2){
+                if(item>2&&item<8){
+                    arr2[item] = '*'
+                }
+            }
+            this.tel = arr2.join('')
+            console.log(this.tel);
+        },
         // 跳转优惠券页面
         discount() {
             this.$router.push({path:'/discount'})
@@ -131,6 +148,10 @@ export default {
         // 跳转设置页面
         reset(){
             this.$router.push({path:'/reset'})
+        },
+        // 特色课
+        features() {
+            
         }
     },
     // 我的页面鉴权

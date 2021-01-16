@@ -6,14 +6,14 @@
             <div class="one">
                 <van-icon name="friends-o" size="30"/>
                 <p class="border-bottom">
-                    <input type="text" v-model="user" placeholder="请输入账号">
+                    <input type="text" v-model="obj.mobile" placeholder="请输入账号">
                     <!-- <button>获取验证码</button> -->
                 </p>
             </div>
             <div class="tow">
                 <van-icon name="friends-o"  size="30"/>
                 <p class="border-bottom">
-                    <input type="text" v-model="pass" placeholder="请输入密码">
+                    <input type="text" v-model="obj.password" placeholder="请输入密码">
                 </p>
             </div>
             <div class="log_btn">
@@ -47,26 +47,38 @@
 </template>
 
 <script>
+import { login } from '@/utils/api/index'
 export default {
     data() {
         return {
-            user:'',
-            pass:''
+            obj:{
+                mobile:'',
+                password:'',
+                type:1
+            }
         };
     },
-    mounted() {},
+    mounted() {
+        
+    },
     methods: {
         login() {
-            if(this.user != '' && this.pass != ''){
-                if(this.pass == localStorage.getItem('pass')){
-                    this.$store.commit('login',this.user)
-                    this.$router.push({path:'/index'})
+            login(this.obj).then(res=>{
+                if(res.code==200){
+                    if(this.user != '' && this.pass != ''){
+                        console.log(res);
+                        localStorage.setItem('token',res.data.remember_token)
+                        this.$store.commit('login',this.obj.mobile)
+                        this.$router.push({path:'/index'})
+                    } else {
+                        this.$toast.fail('账号密码不能为空');
+                    }
                 } else {
                     this.$toast.fail('账号密码不正确');
                 }
-            } else {
-                this.$toast.fail('账号密码不能为空');
-            }
+            })
+            
+            
         },
         register(){
             this.$router.push({path:'/register'})
