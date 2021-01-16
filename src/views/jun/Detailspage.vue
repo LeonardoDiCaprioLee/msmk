@@ -21,7 +21,7 @@
         </ul>
       </div>
     </div>
-    <div class="follow" v-show="falg=='false'">
+    <div class="follow" style="margin-top:-1.2rem;" v-show="falg=='false'">
       <div class="follow1" >
         <ul>
           <li>

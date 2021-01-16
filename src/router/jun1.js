@@ -12,4 +12,9 @@ export default [
         name: 'message',
         component: () => import('../views/jun/message.vue')
     },
+    {
+        path: '/wuliao',
+        name: 'wuliao',
+        component: () => import('../views/jun/wuliao.vue')
+    },
 ]
