@@ -5,10 +5,10 @@
             <div class="conter">
                 <div class="top">
                     <div>
-                        <img src="@/assets/images/my-img/head.jpg" alt="">
+                        <img :src="personal.avatar" alt="">
                         <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
-                    <span class="tel">{{tel}}<img src="@/assets/images/my-img/open.png" alt=""></span>
+                    <span class="tel">{{personal.nickname}}<img src="@/assets/images/my-img/open.png" alt=""></span>
                     <span>去约课</span>
                 </div>
                 <ul>
@@ -81,7 +81,7 @@
                             <img src="@/assets/images/my-img/3-1.png" alt="">
                             <span>优惠券</span>
                         </div>
-                        <div>
+                        <div @click="$router.push('/study')">
                             <img src="@/assets/images/my-img/3-2.png" alt="">
                             <span>学习卡</span>
                         </div>
@@ -118,13 +118,19 @@
 </template>
 
 <script>
+import {Personal} from '@/utils/api/index'
 export default {
     data() {
         return {
-            tel:Number
+            tel:Number,
+            personal:{}
         };
     },
     mounted() {
+        Personal().then(res=>{
+            console.log(res);
+            this.personal = res
+        })
     },
     methods: {
         // 跳转优惠券页面
@@ -137,18 +143,16 @@ export default {
         },
         // 特色课
         features() {
-            
+
         }
     },
     // 我的页面鉴权
     beforeRouteEnter (to, from, next) {
-        next(vm=>{
-            if(vm.$store.state.token){
-                next()
-            }else {
-                next('/login')
-            }
-        })
+        if(localStorage.getItem('token')){
+            next()
+        }else {
+            next('/login')
+        }
     }
 };
 </script>

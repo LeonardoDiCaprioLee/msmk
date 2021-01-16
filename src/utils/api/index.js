@@ -46,9 +46,6 @@ const getBanners = async function () {
 }
 
 // 首页轮播图
-
-
-
 // const getCurrData = async () => {
 //     const data =  await server.get('https://new-api.meiqia.com/visit/get_base_config?ent_id=149768');
 //     console.log(data)
@@ -65,15 +62,19 @@ const login = async function(obj) {
 // 注册接口
 const BindingNumber = async function(obj) {
     var {data} = await server.post('/api/app/smsCode?mobile='+obj.mobile+'&sms_type='+obj.sms_type)
-    console.log(data);
     return Promise.resolve(data.data);
 }
 // 修改密码接口
 const ResetPasss = async function(obj) {
     var {data} = await server.post('/api/app/password')
-    console.log(data);
     return Promise.resolve(data.data);
 }
+// 个人信息接口
+const Personal = async function() {
+    var {data} = await server.get('/api/app/userInfo')
+    return Promise.resolve(data.data);
+}
+
 
 export {
     getBanners,
@@ -81,5 +82,6 @@ export {
     login,
     myStudy,
     BindingNumber,
-    ResetPasss
+    ResetPasss,
+    Personal
 }

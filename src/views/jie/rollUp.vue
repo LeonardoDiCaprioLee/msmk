@@ -11,7 +11,7 @@
           <van-sidebar-item title="英语" />
         </van-sidebar>
       </van-dropdown-item>
-      <van-dropdown-item title="套卷状态" v-model="value" :options="option2" />
+      <van-dropdown-item title="套卷状态" v-model="value2" :options="option2" />
     </van-dropdown-menu>
     <br />
     <span class="lodingContent">请稍后套卷正在赶来的路上啦...</span>
