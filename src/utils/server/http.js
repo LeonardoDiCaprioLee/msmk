@@ -9,12 +9,15 @@ const server = axios.create({
 
 // 请求拦截
 server.interceptors.request.use(config => {
+    config.headers = {
+        deviceType: "H5"
+    }
     // Vue.$loading.show();
     if (localStorage.getItem('token')) {
         config.headers.token = localStorage.getItem('token');
     }
 
-    
+
     return config
 }, err => {
     console.log(err);

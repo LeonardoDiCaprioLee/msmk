@@ -35,7 +35,7 @@
         class="oto-content"
         v-for="(item2,index2) in item.list"
         :key="index2"
-        @click="jump_router"
+        @click="jump_router(item2)"
       >
         <div class="oc-item">
           <img class :src="item2.teacher_avatar" alt />
@@ -88,7 +88,7 @@
 
 <script>
 // 引入请求数据
-import { getBanners } from "../../utils/api/index.js";
+import { getBanners,get_indexlist,} from "../../utils/api/index.js";
 // 引入公共css
 // import "@/assets/css/jun.scss";
 // 引用主页面数据
@@ -108,12 +108,23 @@ export default {
     };
   },
   mounted() {
+    // 获取首页轮播图banner
     getBanners().then(res => {
-      this.banner = res;
+      this.banner = res.data;
       // console.log(res);
     });
+
+    // 获取list列表数据
+    get_indexlist().then(res=>{
+          // 获取自己模拟的数据
     this.arr = arr[0].data;
-    // console.log(this.arr);
+      // console.log(res)
+      // this.arr=res.data
+    })
+
+
+
+    
   },
   components: {
     pubox
@@ -121,9 +132,10 @@ export default {
   computed: {},
   methods: {
     // 跳转路由
-    jump_router() {
+    jump_router(item) {
+      console.log(item)
       if (this.$store.state.token != "") {
-        this.$router.push("/curriculum");
+        this.$router.push({path:'/Detailspage',query:{id:item}});
         this.show = false;
       } else {
         this.show = true;
