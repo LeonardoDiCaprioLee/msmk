@@ -23,11 +23,7 @@ server.interceptors.request.use(config => {
             Authorization:`Bearer ${localStorage.getItem('token')}`
         }
     }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 904a058faea04abca01c7d88706bf7cd3f67419b
     return config
 }, err => {
     console.log(err);
