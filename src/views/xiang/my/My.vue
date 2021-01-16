@@ -5,10 +5,10 @@
             <div class="conter">
                 <div class="top">
                     <div>
-                        <img src="@/assets/images/my-img/head.jpg" alt="">
+                        <img :src="personal.avatar" alt="">
                         <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
-                    <span class="tel">{{tel}}<img src="@/assets/images/my-img/open.png" alt=""></span>
+                    <span class="tel">{{personal.nickname}}<img src="@/assets/images/my-img/open.png" alt=""></span>
                     <span>去约课</span>
                 </div>
                 <ul>
@@ -118,29 +118,21 @@
 </template>
 
 <script>
+import {Personal} from '@/utils/api/index'
 export default {
     data() {
         return {
-            tel:Number
+            tel:Number,
+            personal:{}
         };
     },
     mounted() {
-        this.name()
+        Personal().then(res=>{
+            console.log(res);
+            this.personal = res
+        })
     },
     methods: {
-        // 用户名截取
-        name() {
-            
-            let arr = this.$store.state.token.split('');
-            let arr2 = arr.splice(0,arr.length-1)
-            for(var item in arr2){
-                if(item>2&&item<8){
-                    arr2[item] = '*'
-                }
-            }
-            this.tel = arr2.join('')
-            console.log(this.tel);
-        },
         // 跳转优惠券页面
         discount() {
             this.$router.push({path:'/discount'})
@@ -151,18 +143,16 @@ export default {
         },
         // 特色课
         features() {
-            
+
         }
     },
     // 我的页面鉴权
     beforeRouteEnter (to, from, next) {
-        next(vm=>{
-            if(vm.$store.state.token){
-                next()
-            }else {
-                next('/login')
-            }
-        })
+        if(localStorage.getItem('token')){
+            next()
+        }else {
+            next('/login')
+        }
     }
 };
 </script>
