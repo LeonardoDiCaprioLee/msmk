@@ -1,6 +1,7 @@
 <template>
     <div class='sex'>
-        <van-nav-bar title="性别修改" left-arrow @click-left="onClickLeft" />
+        <van-nav-bar title="性别修改" left-arrow right-text="保存" @click-left="onClickLeft" @click-right="onClickRight"/>
+
     </div>
 </template>
 
@@ -10,7 +11,14 @@ export default {
         return {};
     },
     mounted() {},
-    methods: {},
+    methods: {
+        onClickLeft(){
+            this.$router.go(-1)
+        },
+        onClickRight() {
+            
+        }
+    },
 };
 </script>
 

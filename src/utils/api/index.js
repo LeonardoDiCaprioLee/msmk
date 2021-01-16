@@ -1,5 +1,4 @@
 import server from '../server/http';
-import { promises } from 'fs';
 
 // 获取数据
 // const getBanners = async function() {
@@ -45,13 +44,20 @@ const getBanners = async function () {
 
 
 
-const getCurrData = async () => {
-    const data =  await server.get('https://new-api.meiqia.com/visit/get_base_config?ent_id=149768');
-    console.log(data)
+// const getCurrData = async () => {
+//     const data =  await server.get('https://new-api.meiqia.com/visit/get_base_config?ent_id=149768');
+//     console.log(data)
+// }
+
+// 登录接口
+const login = async function() {
+    var {data} = await server.get('/small4/banner/list')
+    return Promise.resolve(data.data);
 }
 
 
 export {
     getBanners,
-    getCurrData
+    // getCurrData,
+    login
 }

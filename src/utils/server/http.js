@@ -3,7 +3,7 @@ import Vue from 'vue'
 // import loading from "@/components"
 // Vue.use(loading)
 const server = axios.create({
-    baseURL: "",
+    baseURL: "http://120.53.31.103:84",
     timeout: 10000 // 请求超时的时间
 })
 
