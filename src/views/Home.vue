@@ -28,7 +28,7 @@ export default {
   components: {},
     directives: {
     drag(el, binding, vnode) {
-      console.log(vnode);
+      // console.log(vnode);
       var maxW = document.documentElement.clientWidth;
       var maxH = document.documentElement.clientHeight;
 
@@ -47,21 +47,7 @@ export default {
         var thisH = e.targetTouches[0].target.clientHeight;
         var parentH = e.targetTouches[0].target.offsetParent.clientHeight;
 
-        if (leftX <= 0) {
-          leftX = 0;
-        }
-
-        if (leftX >= parentW - thisW) {
-          leftX = parentW - thisW;
-        }
-
-        if (topY <= 0) {
-          topY = 0;
-        }
-
-        if (topY >= parentH - thisH) {
-          topY = parentH - thisH;
-        }
+      
 
         this.style.left = leftX + "px";
         this.style.top = topY + "px";

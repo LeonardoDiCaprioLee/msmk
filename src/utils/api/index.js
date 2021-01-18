@@ -114,14 +114,18 @@ const indexdettails =async function(id){
 
 // 首页列表数据详情
 const Collect = async function() {
-    var {data} = await server.get('/api/app/collect?page=1&limit=1&type=2')
+    var {data} = await server.get('/api/app/collect?page=1&limit=1&type=3')
     return Promise.resolve(data.data);
 }
 
-
-
+// index关注
+const indexgz= async function(id){
+    var {data}=await server.get(`/api/app/teacher/collect/${id}`)
+    console.log(data)
+    return data
+}
 export {
-    getBanners,
+    getBanners, 
     // getCurrData,
     login,
 
@@ -134,5 +138,6 @@ export {
     resetPersonal,
     ageDis,
     city,
-    Collect
+    Collect,
+    indexgz,
 }

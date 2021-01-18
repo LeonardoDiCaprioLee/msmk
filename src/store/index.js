@@ -26,6 +26,15 @@ export default new Vuex.Store({
     },
     set_teacher(state, v) {
       // console.log(v)
+      let flag = false;
+      state.teach.forEach(item => {
+        console.log(item)
+        console.log(item.teacher_name.indexOf(v.teacher_name))
+        if(item.teacher_name.indexOf(v.teacher_name) > -1){
+          console.log('哈哈')
+        } 
+      })
+      console.log("执行了")
       state.teach.push(v)
     }
   },

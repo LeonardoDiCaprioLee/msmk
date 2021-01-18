@@ -54,6 +54,11 @@ const add = [
       name: "Collect",
       component: () => import("@/views/xiang/my/Collect.vue")
     },
+    {
+        path : "/follow",
+        name : "follow",
+        component : () => import("@/views/jie/follow")
+    },
 ]
 export {
     add
