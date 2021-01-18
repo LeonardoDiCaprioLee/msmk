@@ -381,6 +381,9 @@ export default {
     }
   }
 
+  .van-tabs{
+    padding-bottom: 0.4rem;
+  }
   // 排序
   .sort {
        margin-top: 0.4rem;

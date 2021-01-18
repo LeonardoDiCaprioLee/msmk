@@ -12,7 +12,7 @@ const routes = [
     redirect: '/home'
   },
   {
-    path: "/details",
+    path: "/details/:data",
     name: "Details",
     component: () => import("../views/jie/details")
   },
@@ -21,6 +21,17 @@ const routes = [
     path: "/search",
     name: "search",
     component: () => import("../views/jie/search")
+  },
+  // 我的消息
+  {
+    path: "/myMessage",
+    name: "myMessage",
+    component: () => import("../views/jie/myMessage")
+  },
+  {
+    path: "/noMsg",
+    name: "noMsg",
+    component: () => import("../views/jie/noMsg")
   },
   {
     path: '/home',

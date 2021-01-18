@@ -107,8 +107,10 @@ export default {
   components: {},
   directives: {},
   mounted() {
-    this.detailsData = this.$route.query;
-    console.log(this.detailsData);
+    console.log(1)
+    console.log(
+    this.$route.path
+    )
 
     //   console.log(this.$route.query)
     //   console.log(this.detailsData.teachers_list[0].teacher_name)

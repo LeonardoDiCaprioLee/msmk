@@ -28,7 +28,7 @@ export default {
   components: {},
     directives: {
     drag(el, binding, vnode) {
-      console.log(vnode);
+      // console.log(vnode);
       var maxW = document.documentElement.clientWidth;
       var maxH = document.documentElement.clientHeight;
 
