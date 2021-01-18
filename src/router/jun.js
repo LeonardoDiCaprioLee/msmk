@@ -23,6 +23,11 @@ export default [
         name: 'Collection',
         component: () => import('../views/jun/Collection.vue')
     },
+    {
+        path: '/Detailspage',
+        name: 'Detailspage',
+        component: () => import('../views/jun/Detailspage.vue')
+    },
    
 ]
 

@@ -10,6 +10,9 @@ const server = axios.create({
 
 // 请求拦截
 server.interceptors.request.use(config => {
+    config.headers = {
+        deviceType: "H5"
+    }
     // Vue.$loading.show();
     config.headers = {
         deviceType: "H5"
@@ -23,7 +26,6 @@ server.interceptors.request.use(config => {
             Authorization:`Bearer ${localStorage.getItem('token')}`
         }
     }
-
 
     return config
 }, err => {

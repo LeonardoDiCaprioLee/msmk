@@ -156,7 +156,7 @@ export default {
             next('/login')
         }
     }
-};
+}
 </script>
 
 <style lang='scss' scoped>
