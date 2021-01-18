@@ -10,7 +10,7 @@
       <van-tabbar-item icon="setting-o" to="/my">我的</van-tabbar-item>
     </van-tabbar>
         <!-- 定位联系我们 -->
-    <div class="contact" @click="$router.push('/message')">
+    <div class="contact" @click="$router.push('/message')" v-drag>
       <van-icon name="envelop-o" />
     </div>
     <!-- 定位联系我们 -->
@@ -25,7 +25,53 @@ export default {
       active: 1
     };
   },
-  components: {}
+  components: {},
+    directives: {
+    drag(el, binding, vnode) {
+      console.log(vnode);
+      var maxW = document.documentElement.clientWidth;
+      var maxH = document.documentElement.clientHeight;
+
+      var startX = 0;
+      var startY = 0;
+
+      el.addEventListener("touchstart", function(e) {
+        startX = e.targetTouches[0].pageX - this.offsetLeft;
+        startY = e.targetTouches[0].pageY - this.offsetTop;
+      });
+      el.addEventListener("touchmove", function(e) {
+        var leftX = e.targetTouches[0].pageX - startX;
+        var topY = e.targetTouches[0].pageY - startY;
+        var thisW = e.targetTouches[0].target.clientWidth;
+        var parentW = e.targetTouches[0].target.offsetParent.clientWidth;
+        var thisH = e.targetTouches[0].target.clientHeight;
+        var parentH = e.targetTouches[0].target.offsetParent.clientHeight;
+
+        if (leftX <= 0) {
+          leftX = 0;
+        }
+
+        if (leftX >= parentW - thisW) {
+          leftX = parentW - thisW;
+        }
+
+        if (topY <= 0) {
+          topY = 0;
+        }
+
+        if (topY >= parentH - thisH) {
+          topY = parentH - thisH;
+        }
+
+        this.style.left = leftX + "px";
+        this.style.top = topY + "px";
+        // this.innerHTML = "我又被揪起来了，真烦人!";
+      });
+      //   el.addEventListener("touchend", function(e) {
+      //     this.innerHTML = "你终于放弃揪着我了，谢谢!";
+      //   });
+    }
+  }
 };
 </script>
 <style lang="scss">

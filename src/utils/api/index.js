@@ -111,6 +111,15 @@ const indexdettails =async function(id){
     var {data}=await server.get(`/api/app/teacher/info/${id}`)
     return data
 }
+
+// 首页列表数据详情
+const Collect = async function() {
+    var {data} = await server.get('/api/app/collect?page=1&limit=1&type=2')
+    return Promise.resolve(data.data);
+}
+
+
+
 export {
     getBanners,
     // getCurrData,
@@ -124,5 +133,6 @@ export {
     Personal,
     resetPersonal,
     ageDis,
-    city
+    city,
+    Collect
 }

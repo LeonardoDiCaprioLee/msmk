@@ -49,7 +49,11 @@ const add = [
       name: "ResetNikename",
       component: () => import("@/views/xiang/resetUser/ResetNikename.vue")
     },
-    
+    { // 修改用户名路由
+      path: "/collect",
+      name: "Collect",
+      component: () => import("@/views/xiang/my/Collect.vue")
+    },
 ]
 export {
     add

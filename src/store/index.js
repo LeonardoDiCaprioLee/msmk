@@ -13,6 +13,9 @@ export default new Vuex.Store({
     mobile_nikename:{}
   },
   mutations: {
+    out(state) { // 退出登录
+      localStorage.setItem('token', '')
+    },
     // 分类数据筛选
     chooseGrades(state, arr) {
       state.chooseGrades = arr;
@@ -21,6 +24,10 @@ export default new Vuex.Store({
     setUser(state,i){
       state.user = i
     },
+    set_teacher(state, v) {
+      // console.log(v)
+      state.teach.push(v)
+    }
   },
   actions: {
   },
