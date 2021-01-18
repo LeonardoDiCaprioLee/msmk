@@ -104,8 +104,18 @@ const indexdettails =async function(id){
     console.log(data)
     return data
 }
+
+
+
+// index关注
+
+const indexgz= async function(id){
+    var {data}=await server.get(`/api/app/teacher/collect/${id}`)
+    console.log(data)
+    return data
+}
 export {
-    getBanners,
+    getBanners, 
     // getCurrData,
     login,
 
@@ -114,5 +124,6 @@ export {
     myStudy,
     BindingNumber,
     ResetPasss,
-    Personal
+    Personal,
+    indexgz,
 }
