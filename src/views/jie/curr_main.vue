@@ -5,7 +5,13 @@
 </template>
 
 <script>
-import { course,comment,courseInfo,collect,myStudy } from "../../utils/api/index";
+import {
+  course,
+  comment,
+  courseInfo,
+  collect,
+  myStudy,
+} from "../../utils/api/index";
 import eventBus from "./eventBus";
 import currItem from "@/components/currenItem";
 export default {
@@ -275,13 +281,14 @@ export default {
       let arr = [];
       let chooseGrades = this.$store.state.chooseGrades;
       let str = chooseGrades.join("");
+      for (let i = 0; i < chooseGrades.length; i++) {
       this.list.forEach((item) => {
-        // for (let i = 0; i < chooseGrades.length; i++) {
-          if (item.title.indexOf(str) > -1) {
-            arr.push(item);
+        console.log(item)
+        // if(item.indexOf(chooseGrades[i] > -1)){
+        //   arr.push(item)
         // }
-      }
       });
+      }
       return arr;
     },
   },
@@ -291,9 +298,10 @@ export default {
   },
   directives: {},
   mounted() {
-    myStudy().then(res => {
-      console.log(res)
+    myStudy().then((res) => {
+      console.log(res);
     });
+console.log(this.chooseGrades)
     // comment().then(res => {
     //   console.log(res)
     // });

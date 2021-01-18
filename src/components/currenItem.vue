@@ -71,6 +71,7 @@ export default {
   padding: 0 0.28rem;
   border-radius: 0.2rem;
   margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
   // 标题
   .title {
     width: 100%;
@@ -130,5 +131,6 @@ export default {
 .background{
   width: 100%;
   height: 100%;
+  margin-top: 0.5rem;
 }
 </style>
