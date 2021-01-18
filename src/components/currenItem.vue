@@ -37,6 +37,7 @@
         <span v-show="item.underlined_price > 0" class="free" style="color:orange;">${{item.underlined_price}}</span>
       </div>
     </div>
+    <img v-if="currData.length == 0" class="background" src="@/assets/img/jie/WechatIMG1205.jpeg" alt="">
   </div>
 </template>
 
@@ -125,5 +126,9 @@ export default {
       color: #44a426;
     }
   }
+}
+.background{
+  width: 100%;
+  height: 100%;
 }
 </style>

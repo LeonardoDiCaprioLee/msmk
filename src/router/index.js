@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import lixiang from './xiang/index.js'
-import {add} from './xiang/ones.js'
+import { add } from './xiang/ones.js'
 import whjRouter from "./whj_router"
 Vue.use(VueRouter)
 import jun from './jun'
@@ -15,6 +15,12 @@ const routes = [
     path: "/details",
     name: "Details",
     component: () => import("../views/jie/details")
+  },
+  // 特色课搜索页面
+  {
+    path: "/search",
+    name: "search",
+    component: () => import("../views/jie/search")
   },
   {
     path: '/home',
@@ -36,7 +42,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-    routes
-  })
+  routes
+})
 
 export default router

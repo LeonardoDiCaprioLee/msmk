@@ -12,7 +12,7 @@ import server from '../server/http';
 
 // 课程数据
 const myStudy = async function(){
-    let { data } = await server.post('/api/app/order/downOrder');
+    let { data } = await server.post('/api/app/order/downOrder',{course_type : "5"});
     return Promise.resolve(data)
 }
 
