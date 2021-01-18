@@ -1,7 +1,5 @@
 import axios from 'axios';
 // import Vue from 'vue'
-// import loading from "@/components"
-// Vue.use(loading)
 import {Guid} from './guid'
 const server = axios.create({
     baseURL: "http://120.53.31.103:84",
@@ -13,7 +11,6 @@ server.interceptors.request.use(config => {
     config.headers = {
         deviceType: "H5"
     }
-    // Vue.$loading.show();
     config.headers = {
         deviceType: "H5"
     }
@@ -35,11 +32,13 @@ server.interceptors.request.use(config => {
 // 响应拦截
 // res 服务器返回的数据信息
 server.interceptors.response.use(res => {
+    if(res.data.msg == '登录超时，请重新登录'){
+        localStorage.setItem('token','')
+        this.$router.push({path:'/login'})
+    }
     if (res.data == '无效token') {
         alert('token无效，请重新登录')
-        // Vue.$loading.hide()
     } else {
-        // Vue.$loading.hide()
         return res
     }
 }, err => {

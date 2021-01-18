@@ -24,7 +24,7 @@ export default {
         },
         out(){
             // 退出登录，清空token
-            this.$store.commit('out')
+            localStorage.setItem('token','')
             // 跳转登录页
             this.$router.push({path:'/login'})
         }

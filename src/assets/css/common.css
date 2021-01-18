@@ -76,3 +76,17 @@ html,body{
     width: 90%;
     border-radius: 0.3rem;
 }
+
+.setUser .van-cell{
+    padding: 0;
+    text-align: right;
+}
+.setUser .van-cell::after{
+    border: none;
+}
+/* 改变vant地址默认样式 */
+/* .setUser .van-popup--center {
+    width: 100%;
+    position: fixed;
+    bottom: 0 !important;
+} */

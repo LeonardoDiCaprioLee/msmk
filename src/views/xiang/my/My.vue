@@ -123,11 +123,13 @@ export default {
     data() {
         return {
             tel:Number,
-            personal:{}
+            personal:{},
+            obj:{}
         };
     },
     mounted() {
         Personal().then(res=>{
+            console.log(res);
             this.personal = res
         })
     },
@@ -144,8 +146,10 @@ export default {
         features() {
 
         },
+        // 用户星系
         setUser(){
-            this.$router.push({path:'/setUser',query:{user:this.personal}})
+            this.$store.commit('setUser',this.personal)
+            this.$router.push('/setUser')
         }
     },
     // 我的页面鉴权
