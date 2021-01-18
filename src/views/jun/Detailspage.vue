@@ -8,19 +8,21 @@
       </div>
     </div>
     <!-- 关注 -->
+    <van-sticky>
     <div class="follow" v-show='falg'>
       <div class="follow1">
         <ul>
           <li>
             <img src="@/assets/img/jun/n.gif" alt />
           </li>
-          <li style="font-size:0.3rem;padding-top:0.2rem;">{{arr.teacher_name}}</li>
+          <li style="font-size:0.3rem;padding-top:0.2rem;">暂无数据</li>
           <li style="font-size:0.3rem;padding-top:0.2rem;">
             <button>关注</button>
           </li>
         </ul>
       </div>
     </div>
+    </van-sticky>
     <div class="follow" style="margin-top:-1.2rem;" v-show="falg=='false'">
       <div class="follow1" >
         <ul>
@@ -29,7 +31,7 @@
           </li>
           <li style="font-size:0.3rem;padding-top:0.2rem;">{{arr.teacher_name}}</li>
           <li style="font-size:0.3rem;padding-top:0.2rem;">
-            <button>关注</button>
+            <button @click='follow=!follow'>{{follow==true?'关注':'已关注'}}</button>
           </li>
         </ul>
       </div>
@@ -61,7 +63,8 @@ export default {
       id: "",
       active:'0',
       arr:[],
-      falg:''
+      falg:'',
+      follow:true,
     };
   },
   mounted() {
@@ -74,9 +77,9 @@ export default {
     this.falg='true'
       this.arr=[{teacher_id: 3, teacher_name: "杨德胜", teacher_avatar: "https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019X3gWvILU7J1571983543.png", introduction: "　杨老师,特级教师.多次被中国数学会评为全国高中数学竞联赛优秀教练员。长期从事名校理科班的数学教学和…别是近年来大学试行自主招生，有很多同学通过上他的竞赛辅导课进入清华大学、北京大学、上海交通大学等。"}]
     }
-    // indexdettails(this.id).then(res => {
-    //   console.log(res);
-    // });
+     indexdettails(this.id).then(res => {
+       console.log(res);
+});
   },
   components: {},
   computed: {},

@@ -136,18 +136,21 @@ body,html,#app{
 // 方盒子
 
 // 联系
-.contact{
+.contact{  
+    position:absolute;
     width: 1.2rem;
     height: 1.2rem;
     float: left;
-    position: fixed;
     background: #0088dd;
-    bottom: 2rem;
-    right: 0.3rem;
     border-radius: 50%;
     text-align: center;
     line-height: 1rem;
+     bottom: 2rem;
+    right: 0.3rem;
+
+  
     .van-icon{
+        
         color: white;
         font-size: 50%;
     }

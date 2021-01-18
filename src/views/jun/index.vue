@@ -88,7 +88,7 @@
 
 <script>
 // 引入请求数据
-import { getBanners,get_indexlist,} from "../../utils/api/index.js";
+import { getBanners, get_indexlist } from "../../utils/api/index.js";
 // 引入公共css
 // import "@/assets/css/jun.scss";
 // 引用主页面数据
@@ -115,16 +115,12 @@ export default {
     });
 
     // 获取list列表数据
-    get_indexlist().then(res=>{
-          // 获取自己模拟的数据
-    this.arr = arr[0].data;
+    get_indexlist().then(res => {
+      // 获取自己模拟的数据
+      this.arr = arr[0].data;
       // console.log(res)
       // this.arr=res.data
-    })
-
-
-
-    
+    });
   },
   components: {
     pubox
@@ -133,9 +129,9 @@ export default {
   methods: {
     // 跳转路由
     jump_router(item) {
-      console.log(item)
+      console.log(item);
       if (this.$store.state.token != "") {
-        this.$router.push({path:'/Detailspage',query:{id:item}});
+        this.$router.push({ path: "/Detailspage", query: { id: item } });
         this.show = false;
       } else {
         this.show = true;
@@ -150,7 +146,8 @@ export default {
         this.show = true;
       }
     }
-  }
+  },
+ 
 };
 </script>
 
