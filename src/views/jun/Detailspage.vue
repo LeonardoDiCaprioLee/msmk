@@ -31,7 +31,7 @@
           </li>
           <li style="font-size:0.3rem;padding-top:0.2rem;">{{arr.teacher_name}}</li>
           <li style="font-size:0.3rem;padding-top:0.2rem;">
-            <button @click='follow=!follow'>{{follow==true?'关注':'已关注'}}</button>
+            <button @click='guanzhu'>{{this.gz}}</button>
           </li>
         </ul>
       </div>
@@ -40,13 +40,13 @@
     <div class="follow2">
       <van-tabs v-model="active">
         <van-tab title="讲师介绍">
-          <span style="font-size:0.24rem;">老师简介</span>
+          <span style="font-size:0.24rem;">讲师介绍</span>
         </van-tab>
         <van-tab title="主讲课程">
-          <span style="font-size:0.24rem;">老师简介</span>
+          <span style="font-size:0.24rem;">主讲课程</span>
         </van-tab>
         <van-tab title="学院评价">
-          <span style="font-size:0.24rem;">老师简介</span>
+          <span style="font-size:0.24rem;">学院评价</span>
         </van-tab>
       </van-tabs>
     </div>
@@ -65,12 +65,17 @@ export default {
       arr:[],
       falg:'',
       follow:true,
+      gz:'关注'
     };
   },
   mounted() {
     this.id = this.$route.query.id.teacher_id;
-    console.log(this.$route.query.id);
+    
     this.arr=this.$route.query.id
+    if(this.arr.teacher_id>-1){
+       this.arr.gz=true
+    }
+    console.log(this.arr);
     this.falg='false'
     if(this.$route.query.id=='[object MouseEvent]'){
       console.log('666')
@@ -83,7 +88,21 @@ export default {
   },
   components: {},
   computed: {},
-  methods: {}
+  methods: {
+    guanzhu(){
+      let guanzhu=[]
+      console.log(this.arr.gz)
+      this.arr.gz=!this.arr.gz
+      if(this.arr.gz){
+        this.gz='关注'
+      }else{
+        this.gz='已关注'
+        console.log(this.arr)
+        this.$store.commit('set_teacher',this.arr)
+      }
+    }
+  },
+ 
 };
 </script>
 
