@@ -92,7 +92,7 @@ const get_indexlist=async function(){
 // }
 // 登录接口
 const logins = async function(obj) {
-    var {data} = await server.post('/api/app/login?mobile='+obj.mobile+'&password='+obj.password+'&type='+obj.type+'&client=1')
+    var {data} = await server.post('/api/app/login?mobile='+obj.mobile+'&password='+obj.password+'&type='+obj.type)
     return Promise.resolve(data);
 }
 // 注册接口
@@ -141,8 +141,8 @@ const indexdettails =async function(id){
 }
 
 // 首页我的关注 
-const Collect = async function() {
-    var {data} = await server.get('/api/app/collect?page=1&limit=1&type=3')
+const Collect = async function(obj) {
+    var {data} = await server.get('/api/app/collect?page='+obj.page+'&limit='+obj.limit+'&type='+obj.type)
     return Promise.resolve(data.data);
 }
 

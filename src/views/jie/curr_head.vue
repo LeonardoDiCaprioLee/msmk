@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      value : "",
+      value : this.$route.query.name,
     };
   },
   methods: {},
