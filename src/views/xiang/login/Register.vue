@@ -58,11 +58,16 @@ export default {
             outTime:60,
             obj:{
                 mobile:'',
-                sms_type:'login'
+                sms_type:'login',
+                client:1,
+                type:2
             }
         };
     },
     mounted() {
+         BindingNumber(this.obj).then(res=>{
+                console.log(res);
+            })
     },
     methods: {
         password(){
@@ -94,7 +99,7 @@ export default {
         login() {
             if(this.tel != '' && this.passTest != ''){
                 this.$store.commit('login',this.tel)
-                this.$router.push({path:'/resetpass'})
+                // this.$router.push({path:'/resetpass'})
             } else {
                 this.$toast.fail('手机号验证码不能为空');
             }

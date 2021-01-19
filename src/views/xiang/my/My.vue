@@ -129,7 +129,6 @@ export default {
     },
     mounted() {
         Personal().then(res=>{
-            console.log(res);
             this.personal = res
         })
     },
@@ -146,7 +145,7 @@ export default {
         features() {
 
         },
-        // 用户星系
+        // 用户信息
         setUser(){
             this.$store.commit('setUser',this.personal)
             this.$router.push('/setUser')

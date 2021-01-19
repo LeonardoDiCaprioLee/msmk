@@ -26,13 +26,18 @@
 export default {
     data() {
         return {
+            tel:'',
             
         };
     },
     mounted() {
         
     },
-    methods: {},
+    methods: {
+        login() {
+
+        }
+    },
 };
 </script>
 

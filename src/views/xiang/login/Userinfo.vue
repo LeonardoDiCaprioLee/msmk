@@ -105,8 +105,8 @@ export default {
             type:false
         },
       ],
-      show: false,
       content: false,
+      show: false,
       message: {
         date: null,
         content: [],
