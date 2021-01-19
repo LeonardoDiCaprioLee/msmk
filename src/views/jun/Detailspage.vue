@@ -98,7 +98,7 @@ export default {
     guanzhu(){
       this.gz=2
       console.log(this.id)
-      indexgz().then(res=>{
+      indexgz(this.id).then(res=>{
 
         console.log(res)
         this.gz=res.data.flag

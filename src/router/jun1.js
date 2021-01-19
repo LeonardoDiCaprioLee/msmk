@@ -17,4 +17,9 @@ export default [
         name: 'wuliao',
         component: () => import('../views/jun/wuliao.vue')
     },
+    {
+        path: '/vip',
+        name: 'vip',
+        component: () => import('../views/jun/VIP.vue')
+    },
 ]

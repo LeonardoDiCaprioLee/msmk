@@ -136,6 +136,7 @@ const city = async function() {
 // 首页列表数据详情
 const indexdettails =async function(id){
     var {data}=await server.get(`/api/app/teacher/info/${id}`)
+    console.log(data)
     return data
 }
 
