@@ -19,6 +19,9 @@ Vue.use(ElementUI);
 import axios from 'axios'
 Vue.prototype.$axios = axios
 
+import VueQriously from 'vue-qriously'
+Vue.use(VueQriously)
+
 
 Vue.config.productionTip = false
 

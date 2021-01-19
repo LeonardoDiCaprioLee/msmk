@@ -16,6 +16,12 @@ const courseBasis = async function(){
     return Promise.resolve(data)
 }
 
+const courseInfo = async function(id){
+    let { data } = await server.get(`/api/app/courseInfo/basis_id=${id}`);
+    return Promise.resolve(data)
+}
+
+
 // 首页轮播图
 const getBanners = async function () {
     // let list = [
@@ -82,7 +88,6 @@ const BindingNumber = async function(obj) {
 // 修改密码接口
 const ResetPasss = async function(obj) {
     var {data} = await server.post('/api/app/password')
-    console.log(data);
 
     return Promise.resolve(data.data);
 }
@@ -92,20 +97,41 @@ const Personal = async function() {
     return Promise.resolve(data.data);
 }
 // 个人信息修改接口
-// const Personal = async function() {
-//     var {data} = await server.get('/api/app/user')
-//     return Promise.resolve(data.data);
-// }
-
+const resetPersonal = async function(i) {
+    var {data} = await server.put('/api/app/user?',i)
+    return Promise.resolve(data.data);
+}
+// 选择年纪和学科得数据
+const ageDis = async function() {
+    var {data} = await server.get('/api/app/module/attribute/1')
+    return Promise.resolve(data.data);
+}
+// 获取城市列表数据
+const city = async function() {
+    var {data} = await server.get('/api/app/sonArea/320100')
+    return Promise.resolve(data.data);
+}
 
 // 首页列表数据详情
 const indexdettails =async function(id){
     var {data}=await server.get(`/api/app/teacher/info/${id}`)
+    return data
+}
+
+// 首页列表数据详情
+const Collect = async function() {
+    var {data} = await server.get('/api/app/collect?page=1&limit=1&type=3')
+    return Promise.resolve(data.data);
+}
+
+// index关注
+const indexgz= async function(id){
+    var {data}=await server.get(`/api/app/teacher/collect/${id}`)
     console.log(data)
     return data
 }
 export {
-    getBanners,
+    getBanners, 
     // getCurrData,
     login,
     get_indexlist,
@@ -113,5 +139,11 @@ export {
     courseBasis,
     BindingNumber,
     ResetPasss,
-    Personal
+    Personal,
+    resetPersonal,
+    ageDis,
+    city,
+    Collect,
+    indexgz,
+    courseInfo,
 }

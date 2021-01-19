@@ -24,11 +24,6 @@ export default [
         name : "analysis",
         component : () => import("../views/jie/analysis")
     },
-    {
-        path : "/follow",
-        name : "follow",
-        component : () => import("../views/jie/follow")
-    },
     // 学习卡路由
     {
         path : "/study",

@@ -6,7 +6,7 @@
       num="免费"
       price="2.00"
       :title="item.title"
-      @click="$router.push({name:'Details',params:{data:item}})"
+      @click="$router.push({path:'/details',query:{item:item.course_classify_id}})"
     >
       <template #price> {{ item.brows_num }} 人已报名 </template>
       <template #num>

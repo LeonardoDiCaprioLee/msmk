@@ -66,9 +66,7 @@ export default {
             login(this.obj).then(res=>{
                 if(res.code==200){
                     if(this.user != '' && this.pass != ''){
-                        console.log(res);
                         localStorage.setItem('token',res.data.remember_token)
-                        this.$store.commit('login',this.obj.mobile)
                         this.$router.push({path:'/index'})
                     } else {
                         this.$toast.fail('账号密码不能为空');

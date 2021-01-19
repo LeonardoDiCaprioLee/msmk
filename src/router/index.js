@@ -12,7 +12,7 @@ const routes = [
     redirect: '/home'
   },
   {
-    path: "/details/:data",
+    path: "/details",
     name: "Details",
     component: () => import("../views/jie/details")
   },
