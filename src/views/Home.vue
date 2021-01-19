@@ -12,7 +12,7 @@
         <!-- 定位联系我们 -->
     <div class="contact" @click="$router.push('/message')" v-drag>
       <van-icon name="envelop-o" />
-    </div>
+    </div> 
     <!-- 定位联系我们 -->
    
   </div>
