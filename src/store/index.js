@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 分类数据筛选
-    chooseGrades: [],
+    chooseGrades: '',
     teach:[],
     loding:false,
     user:{},

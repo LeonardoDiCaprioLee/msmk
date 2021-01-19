@@ -81,9 +81,9 @@ export default {
         );
         console.log(this.oldSearchArr);
         // 将vuex中的数据进行替换
-        this.$store.commit("chooseGrades", [this.oldSearchArr[0]]);
+        this.$store.commit("chooseGrades", [this.searchVal]);
         // 跳转路由
-        this.$router.push("/curriculum");
+        this.$router.push({path:"/curriculum",query:{name:this.searchVal}});
       }
     },
     // 点击历史搜索
@@ -91,7 +91,7 @@ export default {
       // 将vuex中的数据进行替换
       this.$store.commit("chooseGrades", [item]);
       // 跳转路由
-      this.$router.push("/curriculum");
+      this.$router.push({path:"/curriculum",query:{name:item}});
     },
     // 删除该条搜索记录
     delItem(index) {

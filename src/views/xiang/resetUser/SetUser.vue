@@ -210,6 +210,7 @@ export default {
     myUser() {
     // 个人信息数据接口
       Personal().then(res=>{
+        console.log(res);
         this.obj  = res
       })
     },
@@ -273,10 +274,9 @@ export default {
       // 将本地图片转换为线上图片
       let formDate = new FormData()
       formDate.append("file",e.target.files[0])
-      photo(formDate).then(res=>{
-        this.userInfo.avatar = res.path
-        resetPersonal({avatar:res.data.data.path}).then(r=>{
-          this.myUser()
+      photo(formDate).then(async res=>{
+        await resetPersonal({avatar:res.data.data.path}).then(async r=>{
+          await this.myUser()
         })
       })
     },
