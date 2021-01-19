@@ -31,7 +31,7 @@
       <!-- title -->
       <!-- 老师分类 -->
       <div
-        v-show="item.channel_info.type==3"
+        v-show="item.channel_info.sort==1||item.channel_info.sort==4"
         class="oto-content"
         v-for="(item2,index2) in item.list"
         :key="index2"
@@ -50,7 +50,7 @@
       <div
         class="box-f"
         v-for="(item3,index3) in item.list"
-        v-show="item.channel_info.type==6"
+        v-show="item.channel_info.sort!=1&&item.channel_info.sort!=4"
         :key="index3+'.'"
         @click="jump_router"
       >
@@ -61,7 +61,7 @@
           <span style="font-size:0.2rem;float:left;padding-top:0.22rem">共{{item3.total_periods}}课时</span>
           <ul v-for="(item4,index4) in item3.teachers_list" :key="index4" class="box-f-ul1">
             <li>
-              <img :src="item4.thumb_img" />
+              <img :src="item4.teacher_avatar" />
             </li>
             <li class="baoming">{{item4.teacher_name}}</li>
           </ul>
@@ -121,9 +121,9 @@ export default {
     // 获取list列表数据
     get_indexlist().then(res => {
       // 获取自己模拟的数据
-      // this.arr = arr[0].data;
+      this.arr = arr[0].data;
       // console.log(res)
-      this.arr=res.data
+      // this.arr=res.data
     });
   },
   components: {
