@@ -65,6 +65,9 @@ export default {
 .cards {
   padding-bottom: 1.5rem;
 }
+.van-card {
+  margin-top: 0.5rem;
+}
 .main {
   width: 100%;
   height: 200rem;

@@ -1,76 +1,154 @@
 <template>
-  <div class="details">
-    <!-- 头部 -->
-    <van-nav-bar title="课程详情" left-arrow @click-left="$router.go(-1)">
-      <template #right>
-        <van-icon name="cluster-o" />
-      </template>
-    </van-nav-bar>
+  <div class="detials">
+    <div>
+      <van-nav-bar
+        title="课程详情"
+        right-text="分享"
+        left-arrow
+        @click-left="$router.go(-1)"
+        @click-right="share"
+      />
+      <img :src="detailsData.cover_img" alt="" class="cover_img" />
+      <!-- 课程标题 -->
+      <div style="padding: 0.2rem; background: white">
+        <b>{{ detailsData.title }}</b> <br /><br />
+        <p style="display: flex; justify-content: space-between; width: 100%">
+          <span
+            >共{{ detailsData.total_periods }}课时 |
+            {{ detailsData.sales_num }}人已报名</span
+          >
+          <!-- 收藏按钮 -->
+          <van-icon
+            name="star-o"
+            @click="clickCollection"
+            v-show="!colleFlag"
+          />
+          <van-icon name="star" @click="clickCollection" v-show="colleFlag" />
+        </p>
 
-    <div class="main">
-      <!-- 老师课堂 -->
-      <div class="cd-info">
-        <p class="title">
-          <!-- {{ detailsData.teachers_list[0].teacher_name }} -->
-          璐璐老师9号...
+        <br /><br />
+        <span style="font-size: 0.12rem">
+          开课时间：{{
+            new Date(detailsData.start_play_date)
+              .toLocaleString()
+              .replace("下午", "")
+          }}
+          -
+          {{
+            new Date(detailsData.end_play_date)
+              .toLocaleString()
+              .replace("下午", "")
+          }}
+        </span>
+        <br /><br />
+        <p style="font-size: 0.36rem">
+          <span v-show="detailsData.price > 0" style="color: orange"
+            >$ {{ detailsData.price }}</span
+          >
+          <span v-show="detailsData.price <= 0" style="color: #e60012"
+            >免费</span
+          >
         </p>
-        <p class="info-free">
-          <span v-if="detailsData.underlined_price <= 0">免费</span>
-          <span v-else>${{ detailsData.underlined_price }}</span>
-        </p>
-        <p class="info-item">
-          共{{ detailsData.total_periods }}课时 | 115人已报名
-        </p>
-        <p class="info-com">开课时间：2020.03.09 18:30 - 2020.03.15 15:00</p>
+        <br />
       </div>
-      <!-- 老师详情 -->
-      <div class="cd-teachers">
-        <strong>教师团队</strong>
-        <ul>
-          <li>
-            <!-- {{detailsData.teachers_list[0].teacher_avatar}} -->
-            <!-- <img :src="detailsData.teachers_list[0].teacher_avatar" alt="" /> -->
-            <!-- <span>{{ detailsData.teachers_list[0].teacher_name }}</span> -->
-            <img src="https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg" alt="">
-            <span>璐璐</span>
-          </li>
-        </ul>
+
+      <!-- 服务 -->
+      <div class="sales">
+        <span>服务: {{ detailsData.sales_num }}</span>
+        <p>详情 <van-icon name="arrow" /></p>
       </div>
-      <!-- 课程介绍 -->
-      <div class="cd-tro">
-        <strong>教师团队</strong>
+      <!-- 教学团队 -->
+      <div class="tea">
+        <p class="taem" style="font-weight: 700">教学团队</p>
+        <div class="teacherList">
+          <div v-for="(item, index) in detailsData.teachers_list" :key="index">
+            <div style="border-radius: 50%">
+              <img
+                :src="item.teacher_avatar"
+                alt=""
+                style="width: 1rem; height: 1rem"
+              />
+            </div>
+            <p>{{ item.teacher_name }}</p>
+          </div>
+        </div>
       </div>
-      <!-- 课程大纲 -->
-      <div class="cd-tro">
-        <strong>课程大纲</strong>
-        <img
-          src="@/assets/img/jie/1610674687774.jpg"
-          alt=""
-          @click="$toast.fail('请先登录')"
-        />
-      </div>
-      <!-- 课程评价 -->
-      <div class="cd-tro">
-        <strong>课程评价</strong>
-        <h2 v-show="!$store.state.token">登录后查看</h2>
-        <img src="@/assets/img/jie/pingjia.jpg" alt=""  v-show="$store.state.token"/>
-      </div>
+      <!-- 课程大纲... -->
+      <van-tabs v-model="active" scrollspy sticky style="margin-bottom: 0.3rem">
+        <van-tab
+          v-for="(item, index) in courseTitle"
+          :title="item.name"
+          :key="index"
+        >
+          <div style="background: ; padding: 0.4rem 0.2rem; width: 100%">
+            <p style="font-weight: 700; margin-bottom: 0.2rem">
+              {{ item.name }}
+            </p>
+            <div
+              style="margin-left: 0.4rem; background: white; padding: 0.2rem"
+              v-if="item.name == '课程介绍'"
+              v-html="item.course_details"
+            ></div>
+            <!-- 课程大纲 -->
+            <div v-if="item.name == '课程大纲'" style="background: white">
+              {{ item.title }}
+            </div>
+
+            <div
+              v-if="item.name == '课程评价'"
+              style="
+                margin-top: 0.3rem;
+                background: white;
+                padding-bottom: 1rem;
+              "
+            >
+              <img
+                style="width: 100%"
+                src="@/assets/img/jie/WeChat8bfa94ee0474b67df86b21c98ade9da0.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </van-tab>
+      </van-tabs>
     </div>
 
-    <!-- 底部 -->
-    <div class="footer" @click="enlist">
-      <span v-show="detailsData.has_buy">立即报名</span>
-      <span v-show="!detailsData.has_buy">已报名</span>
-    </div>
+    <van-submit-bar button-text="立即报名" @submit="onSubmit" />
+    <!-- 分享 -->
+      <van-overlay :show="show1" @click="unshow">
+  <div class="wrapper" @click="unshow">
+  
+    <div class="block" >
+      <p style='text-align:center;margin-top:0.2rem;color:red;font-size:0.3rem;'>快来扫一扫分享给好友吧！</p>
+        <qriously style="margin-left:25%;margin-top:20%;"  :value="initQCode" :size="138"/></div>
+  </div>
+</van-overlay>
+    
+    <!-- 分享 -->
   </div>
 </template>
 
 <script>
+import { courseBasis, courseInfo, collect,cancelCollect,downOrder } from "../../utils/api/index";
 export default {
   data() {
     return {
       // 详情数据
-      detailsData: [],
+      detailsData: {},
+      scroll: 0,
+      active: 0,
+      course: [],
+      courseTitle: [
+        {
+          name: "课程介绍",
+        },
+        { name: "课程大纲" },
+        { name: "课程评价" },
+      ],
+      activeNames: [1],
+      colleFlag: false,
+      show1:false,
+      initQCode: 'http://localhost:8080/#/details?item=67',
     };
   },
   methods: {
@@ -82,9 +160,9 @@ export default {
         this.$toast.loading({
           message: "正在跳转登录页面...",
           forbidClick: true,
-          duration : 100
+          duration: 100,
         });
-        return this.$router.push("/login")
+        return this.$router.push("/login");
       }
       if (!this.detailsData.has_buy) {
         //   如果已经报名提示用户已经报名
@@ -101,107 +179,148 @@ export default {
       // 改变是否购买的状态
       this.detailsData.has_buy = false;
     },
+    // 详情数据
+    async detailsDatas() {
+      let res = await courseBasis();
+      let data = res.data.list.filter((item) => {
+        return item.course_classify_id == this.$route.query.item;
+      });
+      this.detailsData = data[0];
+      // console.log(this.detailsData);
+    },
+    async courseInfoData() {
+      // console.log(this.detailsData.teachers_list[0].course_basis_id);
+      let res = await courseInfo(
+        this.detailsData.teachers_list[0].course_basis_id
+      );
+      this.courseTitle[0].course_details = res.data.info.course_details;
+      this.courseTitle[1].title = res.data.info.title;
+      // console.log(res);
+      // console.log(this.courseTitle);
+    },
+    // 点击收藏按钮
+    async clickCollection() {
+      if (this.colleFlag) {
+      // 取消收藏
+        this.colleFlag = false;
+        this.$toast.success("取消收藏成功")
+        // let res = await cancelCollect(this.detailsData.teachers_list[0].course_basis_id);
+        // console.log(res)
+      } else {
+        let res = await collect(
+          this.detailsData.teachers_list[0].course_basis_id
+        );
+        if (res.code == 200) {
+          this.$toast.success(res.msg);
+        }
+        this.colleFlag = true;
+      }
+    },
+    // 立即报名
+    async onSubmit() {
+      let res = await downOrder(this.detailsData.course_type);
+      this.$router.push({path:'/order',query:{res}})
+    },
+    share(){
+      // console.log('分享')
+      // console.log(this.$router.history.current.fullPath)
+      this.show1=true
+      this.initQCode='http://localhost:8080/#'+this.$router.history.current.fullPath
+      // console.log(this.initQCode)
+    },
+    unshow(){
+      // console.log(this.show1)
+      this.show1=false
+    }
   },
   computed: {},
   filters: {},
   components: {},
   directives: {},
-  mounted() {
-    this.detailsData = this.$route.query;
-    console.log(this.detailsData);
+  async mounted() {
+    await this.detailsDatas();
+    this.courseInfoData();
 
     //   console.log(this.$route.query)
     //   console.log(this.detailsData.teachers_list[0].teacher_name)
+  },
+  watch: {
+    scroll() {
+      console.log(window);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.details {
+.detials {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.footer {
-  width: 100%;
-  height: 0.8795rem;
-  font-size: 0.48rem;
-  text-align: center;
-  line-height: 0.8795rem;
-  background: #eb6100;
-  color: white;
-  position: fixed;
-  bottom: 0px;
-}
-
-.main {
-  background: #f0f2f5;
-  flex: 1;
-  .cd-info {
-    padding: 0.3rem;
+  font-size: 0.22rem;
+  .cover_img {
+    width: 100%;
+  }
+  .sales {
+    display: flex;
+    justify-content: space-between;
+    padding: 0rem 0.256rem;
+    align-items: center;
+    margin: 0.256rem 0rem 0rem;
     background: white;
-    .title {
-      font-size: 0.32rem;
-      font-weight: 700;
-    }
-    .info-free {
-      height: 0.62rem;
-      line-height: 0.62rem;
-      color: #eb6100;
-      font-size: 0.34rem;
-    }
-    .info-item {
-      font-size: 0.3rem;
-      height: 0.6rem;
-      line-height: 0.6rem;
-    }
-    .info-com {
-      font-size: 0.3rem;
-      height: 0.6rem;
-      line-height: 0.6rem;
+    height: 0.99rem;
+  }
+  .tea {
+    margin: 0.16rem 0 0;
+    padding: 0.08rem 0.16rem 0rem;
+    background: white;
+    .taem {
+      margin: 0.4rem 0rem;
     }
   }
-  .cd-teachers {
-    margin: 0.3rem 0px 0px;
-    font-size: 0.3rem;
-    margin: 0.3rem 0px 0px;
-    background: white;
-    height: 2.8994rem;
-    padding: 0.1rem 0.2rem;
-    strong {
-      display: block;
-      margin: 0.2rem 0px 0px;
-    }
-    ul {
-      li {
-        display: flex;
-        flex-direction: column;
-        padding: 0.2rem 0px;
-        img {
-          width: 0.78rem;
-        }
-        span {
-          padding: 0.14rem 0.06rem 0px;
-        }
+  .teacherList {
+    display: flex;
+    margin: 0.2rem 0rem;
+    height: 1.86rem;
+    div {
+      margin-left: 0.2rem;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      img {
+        border-radius: 50%;
+        margin-bottom: 0.2rem;
       }
     }
   }
-  .cd-tro {
-    margin: 0.3rem 0px 0px;
-    font-size: 0.3rem;
-    margin: 0.3rem 0px 0px;
-    background: white;
-    // height: 1.2992rem;
-    padding: 0.1rem 0.2rem;
-    overflow: scroll;
-    padding-bottom: 1rem;
-    img {
-      width: 100%;
-    }
-    h2 {
-      margin: 0.6rem;
-    }
+}
+.van-tab__pane {
+  background: white;
+  margin-bottom: 0.4rem;
+  padding-top: 0.4rem;
+  p:nth-of-type(1) {
+    font-size: 0.36rem;
+  }
+  div > div {
+    padding: 0.4rem;
   }
 }
+.van-submit-bar__button {
+  width: 100%;
+}
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .block {
+    width: 5rem;
+    height: 5rem;
+    background-color: #fff;
+  
+    
+  }
 </style>

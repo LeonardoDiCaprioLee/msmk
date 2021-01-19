@@ -11,8 +11,29 @@ import server from '../server/http';
 // })
 
 // 课程数据
-const myStudy = async function(){
-    let { data } = await server.post('/api/app/order/downOrder');
+const courseBasis = async function(){
+    let { data } = await server.get('/api/app/courseBasis?page=1&limit=10&');
+    return Promise.resolve(data)
+}
+// 详情数据
+const courseInfo = async function(id){
+    let { data } = await server.get(`/api/app/courseInfo/basis_id=${id}`);
+    return Promise.resolve(data)
+}
+// 课程收藏
+const collect = async function(id){
+    let { data } = await server.post(`/api/app/collect`,{ type:1,course_basis_id:id });
+    return Promise.resolve(data)
+}
+// 取消收藏
+const cancelCollect = async function(id){
+    console.log(id)
+    let { data } = await server.post(`/api/app/collect/cancel/227/1`,{ collect_id:id });
+    return Promise.resolve(data)
+}
+// 立即报名
+const downOrder = async function(id){
+    let { data } = await server.post(`/api/app/order/shopInfo`,{shop_id: 183, type: 3, user_coupon_id: 0, address_id: "", product_number: 1});
     return Promise.resolve(data)
 }
 
@@ -51,7 +72,7 @@ const getBanners = async function () {
 // 获取首页列表
 const get_indexlist=async function(){
     var {data} = await server.get('/api/app/recommend/appIndex');
-    console.log(data)
+    // console.log(data)
     return data
 }
 // 获取首页列表
@@ -134,10 +155,9 @@ export {
     getBanners, 
     // getCurrData,
     logins,
-
     get_indexlist,
     indexdettails,
-    myStudy,
+    courseBasis,
     BindingNumber,
     ResetPasss,
     Personal,
@@ -147,4 +167,8 @@ export {
     Collect,
     indexgz,
     photo,
+    courseInfo,
+    collect,
+    cancelCollect,
+    downOrder
 }
