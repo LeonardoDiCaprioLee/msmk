@@ -16,8 +16,8 @@ const server = axios.create({
 // 请求拦截
 server.interceptors.request.use(config => {
     store.state.loding=true
-    console.log(store.state.loding)
-    console.log()
+    // console.log(store.state.loding)
+    // console.log()
     config.headers = {
         deviceType: "H5"
     }
@@ -43,7 +43,7 @@ server.interceptors.request.use(config => {
 server.interceptors.response.use(res => {
 
     store.state.loding=false;
-    console.log(store.state.loding)
+    // console.log(store.state.loding)
 
     if(res.data.msg == '登录超时，请重新登录'){
         localStorage.setItem('token','')

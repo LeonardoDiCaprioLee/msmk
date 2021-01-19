@@ -7,14 +7,24 @@
         left-arrow
         @click-left="$router.go(-1)"
       />
-      <!-- <img :src="detailsData.cover_img" alt="" class="cover_img"> -->
+      <img :src="detailsData.cover_img" alt="" class="cover_img" />
       <!-- 课程标题 -->
       <div style="padding: 0.2rem; background: white">
         <b>{{ detailsData.title }}</b> <br /><br />
-        <span
-          >共{{ detailsData.total_periods }}课时 |
-          {{ detailsData.sales_num }}人已报名</span
-        >
+        <p style="display: flex; justify-content: space-between; width: 100%">
+          <span
+            >共{{ detailsData.total_periods }}课时 |
+            {{ detailsData.sales_num }}人已报名</span
+          >
+          <!-- 收藏按钮 -->
+          <van-icon
+            name="star-o"
+            @click="clickCollection"
+            v-show="!colleFlag"
+          />
+          <van-icon name="star" @click="clickCollection" v-show="colleFlag" />
+        </p>
+
         <br /><br />
         <span style="font-size: 0.12rem">
           开课时间：{{
@@ -63,24 +73,24 @@
         </div>
       </div>
       <!-- 课程大纲... -->
-      <van-tabs v-model="active" scrollspy sticky style="margin-bottom: 0.3rem;">
+      <van-tabs v-model="active" scrollspy sticky style="margin-bottom: 0.3rem">
         <van-tab
           v-for="(item, index) in courseTitle"
           :title="item.name"
           :key="index"
         >
-          <div style="background: ; padding: 0.4rem 0.2rem">
+          <div style="background: ; padding: 0.4rem 0.2rem; width: 100%">
             <p style="font-weight: 700; margin-bottom: 0.2rem">
               {{ item.name }}
             </p>
             <div
-              style="margin-left: 0.4rem; background: white;padding: 0.2rem;"
+              style="margin-left: 0.4rem; background: white; padding: 0.2rem"
               v-if="item.name == '课程介绍'"
               v-html="item.course_details"
             ></div>
             <!-- 课程大纲 -->
-            <div v-if="item.name == '课程大纲'" style=" background: white;">
-              {{item.title}}
+            <div v-if="item.name == '课程大纲'" style="background: white">
+              {{ item.title }}
             </div>
 
             <div
@@ -88,6 +98,7 @@
               style="
                 margin-top: 0.3rem;
                 background: white;
+                padding-bottom: 1rem;
               "
             >
               <img
@@ -100,11 +111,13 @@
         </van-tab>
       </van-tabs>
     </div>
+
+    <van-submit-bar button-text="立即报名" @submit="onSubmit" />
   </div>
 </template>
 
 <script>
-import { courseBasis, courseInfo } from "../../utils/api/index";
+import { courseBasis, courseInfo, collect,cancelCollect,downOrder } from "../../utils/api/index";
 export default {
   data() {
     return {
@@ -121,6 +134,7 @@ export default {
         { name: "课程评价" },
       ],
       activeNames: [1],
+      colleFlag: false,
     };
   },
   methods: {
@@ -158,17 +172,40 @@ export default {
         return item.course_classify_id == this.$route.query.item;
       });
       this.detailsData = data[0];
-      console.log(this.detailsData);
+      // console.log(this.detailsData);
     },
     async courseInfoData() {
-      console.log(this.detailsData.teachers_list[0].course_basis_id);
+      // console.log(this.detailsData.teachers_list[0].course_basis_id);
       let res = await courseInfo(
         this.detailsData.teachers_list[0].course_basis_id
       );
       this.courseTitle[0].course_details = res.data.info.course_details;
       this.courseTitle[1].title = res.data.info.title;
-      console.log(res);
-      console.log(this.courseTitle);
+      // console.log(res);
+      // console.log(this.courseTitle);
+    },
+    // 点击收藏按钮
+    async clickCollection() {
+      if (this.colleFlag) {
+      // 取消收藏
+        this.colleFlag = false;
+        this.$toast.success("取消收藏成功")
+        // let res = await cancelCollect(this.detailsData.teachers_list[0].course_basis_id);
+        // console.log(res)
+      } else {
+        let res = await collect(
+          this.detailsData.teachers_list[0].course_basis_id
+        );
+        if (res.code == 200) {
+          this.$toast.success(res.msg);
+        }
+        this.colleFlag = true;
+      }
+    },
+    // 立即报名
+    async onSubmit() {
+      let res = await downOrder(this.detailsData.course_type);
+      this.$router.push({path:'/order',query:{res}})
     },
   },
   computed: {},
@@ -232,5 +269,19 @@ export default {
       }
     }
   }
+}
+.van-tab__pane {
+  background: white;
+  margin-bottom: 0.4rem;
+  padding-top: 0.4rem;
+  p:nth-of-type(1) {
+    font-size: 0.36rem;
+  }
+  div > div {
+    padding: 0.4rem;
+  }
+}
+.van-submit-bar__button {
+  width: 100%;
 }
 </style>
