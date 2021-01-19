@@ -105,6 +105,9 @@ export default {
         if(res.code==200){
           this.$toast('关注成功');
         }
+        if(this.gz==1){
+            this.$toast('取消关注');
+        }
       })
       // let guanzhu=[]
       // console.log(this.arr)

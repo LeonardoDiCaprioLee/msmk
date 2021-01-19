@@ -58,7 +58,8 @@ export default {
       //     this.innerHTML = "你终于放弃揪着我了，谢谢!";
       //   });
     }
-  }
+  },
+   
 };
 </script>
 <style lang="scss">

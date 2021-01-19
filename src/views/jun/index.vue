@@ -104,10 +104,14 @@ export default {
       // 轮播图
       banner: [],
       arr: [],
-      show: false
+      show: false,
+      flag: 0
     };
   },
   mounted() {
+    // 定时器token过期
+    // this.signout();
+    // 定时器token过期
     // 获取首页轮播图banner
     getBanners().then(res => {
       this.banner = res.data;
@@ -138,6 +142,9 @@ export default {
       }
     },
     // 跳转日历
+    log() {
+      this.$router.push("/login");
+    },
     jump_rili() {
       if (this.$store.state.token != "") {
         this.$router.push("/calendar");
@@ -145,9 +152,17 @@ export default {
       } else {
         this.show = true;
       }
+    },
+    signout() {
+      setTimeout(() => {
+        var token=localStorage.getItem('token')
+        console.log(token)
+        localStorage.removeItem('token')
+        console.log('清除token')
+        this.log();
+      }, 3000000);
     }
-  },
- 
+  }
 };
 </script>
 
