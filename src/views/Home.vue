@@ -1,7 +1,7 @@
 <template>
   <div class="home">
+    <van-loading v-show="$store.state.loding" />
     <router-view></router-view>
-
     <van-tabbar v-model="active" route>
       <van-tabbar-item icon="home-o" to="/index">首页</van-tabbar-item>
       <van-tabbar-item icon="search" to="/curriculum">课程</van-tabbar-item>
@@ -12,8 +12,9 @@
         <!-- 定位联系我们 -->
     <div class="contact" @click="$router.push('/message')" v-drag>
       <van-icon name="envelop-o" />
-    </div>
+    </div> 
     <!-- 定位联系我们 -->
+   
   </div>
 </template>
 
