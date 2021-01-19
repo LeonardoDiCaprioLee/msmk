@@ -3,9 +3,10 @@
     <div>
       <van-nav-bar
         title="课程详情"
-        right-text="按钮"
+        right-text="分享"
         left-arrow
         @click-left="$router.go(-1)"
+        @click-right="share"
       />
       <!-- <img :src="detailsData.cover_img" alt="" class="cover_img"> -->
       <!-- 课程标题 -->
@@ -100,6 +101,17 @@
         </van-tab>
       </van-tabs>
     </div>
+    <!-- 分享 -->
+      <van-overlay :show="show1" @click="unshow">
+  <div class="wrapper" @click="unshow">
+  
+    <div class="block" >
+      <p style='text-align:center;margin-top:0.2rem;color:red;font-size:0.3rem;'>快来扫一扫分享给好友吧！</p>
+        <qriously style="margin-left:25%;margin-top:20%;"  :value="initQCode" :size="138"/></div>
+  </div>
+</van-overlay>
+    
+    <!-- 分享 -->
   </div>
 </template>
 
@@ -121,6 +133,8 @@ export default {
         { name: "课程评价" },
       ],
       activeNames: [1],
+      show1:false,
+      initQCode: 'http://localhost:8080/#/details?item=67',
     };
   },
   methods: {
@@ -170,6 +184,17 @@ export default {
       console.log(res);
       console.log(this.courseTitle);
     },
+    share(){
+      // console.log('分享')
+      // console.log(this.$router.history.current.fullPath)
+      this.show1=true
+      this.initQCode='http://localhost:8080/#'+this.$router.history.current.fullPath
+      // console.log(this.initQCode)
+    },
+    unshow(){
+      // console.log(this.show1)
+      this.show1=false
+    }
   },
   computed: {},
   filters: {},
@@ -233,4 +258,18 @@ export default {
     }
   }
 }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .block {
+    width: 5rem;
+    height: 5rem;
+    background-color: #fff;
+  
+    
+  }
 </style>
