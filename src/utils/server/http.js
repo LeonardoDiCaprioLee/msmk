@@ -1,8 +1,11 @@
 import axios from 'axios';
 // import Vue from 'vue'
+<<<<<<< HEAD
 // import loading from "@/components"
 // Vue.use(loading)
 import '@/store/index.js'
+=======
+>>>>>>> 975736508a1c469a5103990770347b14eebd008b
 import {Guid} from './guid'
 import store from '../../store';
 const server = axios.create({
@@ -19,7 +22,6 @@ server.interceptors.request.use(config => {
     config.headers = {
         deviceType: "H5"
     }
-    // Vue.$loading.show();
     config.headers = {
         deviceType: "H5"
     }
@@ -32,7 +34,6 @@ server.interceptors.request.use(config => {
             Authorization:`Bearer ${localStorage.getItem('token')}`
         }
     }
-
     return config
 }, err => {
     console.log(err);
@@ -41,14 +42,23 @@ server.interceptors.request.use(config => {
 // 响应拦截
 // res 服务器返回的数据信息
 server.interceptors.response.use(res => {
+<<<<<<< HEAD
     store.state.loding=false;
     console.log(store.state.loding)
+=======
+    if(res.data.msg == '登录超时，请重新登录'){
+        localStorage.setItem('token','')
+        this.$router.push({path:'/login'})
+    }
+>>>>>>> 975736508a1c469a5103990770347b14eebd008b
     if (res.data == '无效token') {
         alert('token无效，请重新登录')
-        // Vue.$loading.hide()
     } else {
+<<<<<<< HEAD
         // Vue.$loading.hide()
 
+=======
+>>>>>>> 975736508a1c469a5103990770347b14eebd008b
         return res
     }
 }, err => {

@@ -1,31 +1,117 @@
 <template>
-  <div>
+  <div class="follow">
     <van-nav-bar title="我的关注" left-arrow @click-left="$router.go(-1)" />
-    <van-card
-    v-for="(item,index) in 8"
-    :key="index"
-      num="2"
-      price="2.00"
-      desc="描述信息"
-      title="商品标题"
-      thumb="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fd69cd1825af28ee1a077108590ebffa9a10d7787.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613299386&t=47219824042e8ad5f636f79208e8e459"
-    />
+    <div class="content">
+        <ul>
+          <li>
+            <p><img src="" alt=""></p>
+            <div>
+              <p>
+                <span class="title">李湘老师</span>
+                <span class="or">已关注</span>
+              </p>
+              <p>
+                <span>女</span>
+                <span>32岁</span>
+                <span>10年教龄</span>
+              </p>
+            </div>
+            <p><button>查看详情</button></p>
+          </li>
+        </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import {Collect} from '@/utils/api/index'
 export default {
   data() {
-    return {};
+    return {
+      list:[]
+    };
   },
   methods: {},
   computed: {},
   filters: {},
   components: {},
   directives: {},
-  mounted() {},
+  mounted() {
+    Collect().then(res=>{
+      console.log(res);
+    })
+  },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  .follow{
+    width: 100%;
+    height: 100%;
+    .content{
+      width: 100%;
+      height: calc(100% - 1rem);
+      padding: 0 0.3rem;
+      background-color: #fff;
+      ul{
+        width: 100%;
+        padding-top: 0.2rem;
+        li{
+          width: 100%;
+          height: 1.5rem;
+          border-radius: 0.1rem;
+          box-shadow: 0 0 10px -9px;
+          display: flex;
+          align-items: center;
+          margin-bottom: 0.2rem;
+          >p{
+              width: 30%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            img{
+              width: 20%;
+              height: 1rem;
+              border-radius: 50%;
+            }
+            button{
+              width: 80%;
+              height: 0.5rem;
+              font-size: 0.26rem;
+              border-radius: 0.1rem;
+              border: none;
+              outline: none;
+              color: #fff;
+              background-color: orangered;
+            }
+          }
+          div{
+            width: 40%;
+            height: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            p{
+              width: 100%;
+              display: flex;
+              span{
+                font-size: 0.26rem;
+                margin-right: 0.2rem;
+              }
+              .or{
+                color: orangered;
+              }
+              .title{
+                font-size: 0.32rem;
+                font-weight: bold;
+              }
+            }
+            p:nth-child(2){
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
 </style>

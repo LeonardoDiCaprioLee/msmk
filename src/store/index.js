@@ -9,8 +9,13 @@ export default new Vuex.Store({
   state: {
     // 分类数据筛选
     chooseGrades: [],
+<<<<<<< HEAD
     teach:[],
     loding:false
+=======
+    user:{},
+    mobile_nikename:{}
+>>>>>>> 975736508a1c469a5103990770347b14eebd008b
   },
   mutations: {
     out(state) { // 退出登录
@@ -20,6 +25,9 @@ export default new Vuex.Store({
     chooseGrades(state, arr) {
       state.chooseGrades = arr;
       console.log(state.chooseGrades)
+    },
+    setUser(state,i){
+      state.user = i
     },
     set_teacher(state, v) {
       // console.log(v)

@@ -34,17 +34,31 @@ const add = [
       name: "Userinfo",
       component: () => import("@/views/xiang/login/Userinfo.vue")
     },
-    { // 修改性别路由
-      path: "/sex",
-      name: "Sex",
-      component: () => import("@/views/xiang/login/Sex.vue")
-    },
     { // 用户信息路由
       path: "/setUser",
       name: "SetUser",
-      component: () => import("@/views/xiang/my/SetUser.vue")
+      component: () => import("@/views/xiang/resetUser/SetUser.vue")
     },
-    
+    { // 修改性别路由
+      path: "/sex",
+      name: "Sex",
+      component: () => import("@/views/xiang/resetUser/Sex.vue")
+    },
+    { // 修改用户名路由
+      path: "/resetNikename",
+      name: "ResetNikename",
+      component: () => import("@/views/xiang/resetUser/ResetNikename.vue")
+    },
+    { // 修改用户名路由
+      path: "/collect",
+      name: "Collect",
+      component: () => import("@/views/xiang/my/Collect.vue")
+    },
+    {
+        path : "/follow",
+        name : "follow",
+        component : () => import("@/views/jie/follow")
+    },
 ]
 export {
     add
