@@ -21,6 +21,7 @@ export default new Vuex.Store({
       state.chooseGrades = arr;
       console.log(state.chooseGrades)
     },
+    // 用户信息存储
     setUser(state,i){
       state.user = i
     },

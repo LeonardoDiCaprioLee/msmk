@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { login } from '@/utils/api/index'
+import { logins } from '@/utils/api/index'
 export default {
     data() {
         return {
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         login() {
-            login(this.obj).then(res=>{
+            logins(this.obj).then(res=>{
                 if(res.code==200){
                     if(this.user != '' && this.pass != ''){
                         localStorage.setItem('token',res.data.remember_token)
@@ -75,8 +75,6 @@ export default {
                     this.$toast.fail('账号密码不正确');
                 }
             })
-            
-            
         },
         register(){
             this.$router.push({path:'/register'})
