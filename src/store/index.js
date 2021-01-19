@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     // 分类数据筛选
     chooseGrades: [],
-    teach:[]
+    teach:[],
+    loding:false
   },
   mutations: {
     out(state) { // 退出登录
