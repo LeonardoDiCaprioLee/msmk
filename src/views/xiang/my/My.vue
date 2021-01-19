@@ -87,7 +87,7 @@
                         </div>
                         <div>
                             <img src="@/assets/images/my-img/3-3.png" alt="">
-                            <span>会员</span>
+                            <span @click="$router.push('/vip')">会员</span>
                         </div>
                     </div>
                 </li>

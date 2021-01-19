@@ -98,12 +98,15 @@ export default {
     guanzhu(){
       this.gz=2
       console.log(this.id)
-      indexgz().then(res=>{
+      indexgz(this.id).then(res=>{
 
         console.log(res)
         this.gz=res.data.flag
         if(res.code==200){
           this.$toast('关注成功');
+        }
+        if(this.gz==1){
+            this.$toast('取消关注');
         }
       })
       // let guanzhu=[]
