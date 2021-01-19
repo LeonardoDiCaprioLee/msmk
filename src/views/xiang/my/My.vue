@@ -94,7 +94,7 @@
                 <li>
                     <p>自助服务</p>
                     <div>
-                        <div>
+                        <div @click="$router.push('/myMessage')">
                             <img src="@/assets/images/my-img/4-1.png" alt="">
                             <span>我的消息</span>
                         </div>

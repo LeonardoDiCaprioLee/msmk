@@ -36,4 +36,5 @@ export default [
         name : "exchange",
         component : () => import("../views/jie/exchange")
     },
+    
 ]

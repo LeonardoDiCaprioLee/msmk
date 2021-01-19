@@ -11,10 +11,16 @@ import server from '../server/http';
 // })
 
 // 课程数据
-const myStudy = async function(){
-    let { data } = await server.post('/api/app/order/downOrder');
+const courseBasis = async function(){
+    let { data } = await server.get('/api/app/courseBasis?page=1&limit=10&');
     return Promise.resolve(data)
 }
+
+const courseInfo = async function(id){
+    let { data } = await server.get(`/api/app/courseInfo/basis_id=${id}`);
+    return Promise.resolve(data)
+}
+
 
 // 首页轮播图
 const getBanners = async function () {
@@ -128,10 +134,9 @@ export {
     getBanners, 
     // getCurrData,
     login,
-
     get_indexlist,
     indexdettails,
-    myStudy,
+    courseBasis,
     BindingNumber,
     ResetPasss,
     Personal,
@@ -140,4 +145,5 @@ export {
     city,
     Collect,
     indexgz,
+    courseInfo,
 }

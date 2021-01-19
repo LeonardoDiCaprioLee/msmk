@@ -332,6 +332,7 @@ export default {
   }
   // 分类
   .classify {
+    margin-top: 0.4rem;
     padding: 0px 0px 0.2rem 0.3rem;
     position: absolute;
     background: white;
@@ -380,8 +381,12 @@ export default {
     }
   }
 
+  .van-tabs{
+    padding-bottom: 0.4rem;
+  }
   // 排序
   .sort {
+       margin-top: 0.4rem;
     position: absolute;
     z-index: 10;
     background: white;
@@ -396,6 +401,7 @@ export default {
   // 筛选数据
   .screen {
     display: flex;
+       margin-top: 0.4rem;
     flex-wrap: wrap;
     padding: 0.4rem 0px 0px 0.3rem;
     position: absolute;
