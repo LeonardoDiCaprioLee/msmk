@@ -51,7 +51,7 @@ const getBanners = async function () {
 // 获取首页列表
 const get_indexlist=async function(){
     var {data} = await server.get('/api/app/recommend/appIndex');
-    console.log(data)
+    // console.log(data)
     return data
 }
 // 获取首页列表
