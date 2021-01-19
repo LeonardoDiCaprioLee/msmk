@@ -9,13 +9,10 @@ export default new Vuex.Store({
   state: {
     // 分类数据筛选
     chooseGrades: [],
-<<<<<<< HEAD
     teach:[],
-    loding:false
-=======
+    loding:false,
     user:{},
     mobile_nikename:{}
->>>>>>> 975736508a1c469a5103990770347b14eebd008b
   },
   mutations: {
     out(state) { // 退出登录
