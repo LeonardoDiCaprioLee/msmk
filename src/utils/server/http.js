@@ -21,9 +21,6 @@ server.interceptors.request.use(config => {
     config.headers = {
         deviceType: "H5"
     }
-    config.headers = {
-        deviceType: "H5"
-    }
     let ID = Guid.NewGuid().ToString('D')
     window.sessionStorage.setItem('DeviceID',ID)
     if (localStorage.getItem('token')) {
