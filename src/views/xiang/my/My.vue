@@ -87,7 +87,7 @@
                         </div>
                         <div>
                             <img src="@/assets/images/my-img/3-3.png" alt="">
-                            <span>会员</span>
+                            <span @click="$router.push('/vip')">会员</span>
                         </div>
                     </div>
                 </li>
@@ -129,7 +129,6 @@ export default {
     },
     mounted() {
         Personal().then(res=>{
-            console.log(res);
             this.personal = res
         })
     },
@@ -146,7 +145,7 @@ export default {
         features() {
 
         },
-        // 用户星系
+        // 用户信息
         setUser(){
             this.$store.commit('setUser',this.personal)
             this.$router.push('/setUser')

@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 分类数据筛选
-    chooseGrades: [],
+    chooseGrades: '',
     teach:[],
     loding:false,
     user:{},
@@ -23,6 +23,7 @@ export default new Vuex.Store({
       state.chooseGrades = arr;
       console.log(state.chooseGrades)
     },
+    // 用户信息存储
     setUser(state,i){
       state.user = i
     },

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { login } from '@/utils/api/index'
+import { logins } from '@/utils/api/index'
 export default {
     data() {
         return {
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         login() {
-            login(this.obj).then(res=>{
+            logins(this.obj).then(res=>{
                 if(res.code==200){
                     if(this.user != '' && this.pass != ''){
                         localStorage.setItem('token',res.data.remember_token)
@@ -71,12 +71,12 @@ export default {
                     } else {
                         this.$toast.fail('账号密码不能为空');
                     }
+                } else if(res.msg=='手机号码未注册，请先去注册') {
+                    this.$toast.fail('手机号码未注册，请先去注册');
                 } else {
-                    this.$toast.fail('账号密码不正确');
+                    this.$toast.fail('账号密码不对');
                 }
             })
-            
-            
         },
         register(){
             this.$router.push({path:'/register'})

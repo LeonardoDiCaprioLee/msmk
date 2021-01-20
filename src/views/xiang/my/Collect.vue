@@ -2,14 +2,14 @@
     <div class='collect'>
         <van-nav-bar title="我的收藏" left-arrow @click-left="onClickLeft"/>
         <ul>
-            <li class="border-bottom">
-                <p><img src="" alt=""></p>
+            <li class="border-bottom" v-for="(item,index) in collectList" :key="index" @click="collectDetail()">
+                <p><img :src="item.teachersAvatar" alt=""></p>
                 <div>
                     <div>
-                        <p class="title"><span>券</span><span>如何成为旅游体验师</span></p>
-                        <p class="gray">845人已报名</p>
+                        <p class="title"><span>券</span><span>{{item.title}}</span></p>
+                        <p class="gray">{{item.section_num}}人已报名</p>
                     </div>
-                    <p class="red">￥1998.0</p>
+                    <p class="red">￥{{item.price}}</p>
                 </div>
             </li>
         </ul>
@@ -20,16 +20,26 @@
 import {Collect} from '@/utils/api/index'
 export default {
     data() {
-        return {};
+        return {
+            collectList:[]
+        };
     },
     mounted() {
-        Collect().then(res=>{
+        Collect({
+            page:1,
+            limit:10,
+            type:1
+        }).then(res=>{
             console.log(res);
+            this.collectList = res.list
         })
     },
     methods: {
         onClickLeft() {
             this.$router.go(-1)
+        },
+        collectDetail() {
+            // this.$router.push({path:'/detail',})
         }
     },
 };

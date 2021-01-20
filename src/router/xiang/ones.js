@@ -54,10 +54,15 @@ const add = [
       name: "Collect",
       component: () => import("@/views/xiang/my/Collect.vue")
     },
-    {
+    { // 我的关注路由
         path : "/follow",
         name : "follow",
         component : () => import("@/views/jie/follow")
+    },
+    { // 我的关注路由
+        path : "/introduce",
+        name : "Introduce",
+        component : () => import("@/views/xiang/detail/Introduce")
     },
 ]
 export {

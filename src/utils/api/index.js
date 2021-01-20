@@ -93,7 +93,6 @@ const get_indexlist=async function(){
 //     console.log(data)
 // }
 
-// 登录接口
 
 
 // const login = async function () {
@@ -102,7 +101,8 @@ const get_indexlist=async function(){
 //     var {data} = await server.get('/small4/banner/list',{limit : 10})
 
 // }
-const login = async function(obj) {
+// 登录接口
+const logins = async function(obj) {
     var {data} = await server.post('/api/app/login?mobile='+obj.mobile+'&password='+obj.password+'&type='+obj.type)
     return Promise.resolve(data);
 }
@@ -124,13 +124,19 @@ const Personal = async function() {
 }
 // 个人信息修改接口
 const resetPersonal = async function(i) {
-    var {data} = await server.put('/api/app/user?',i)
-    return Promise.resolve(data.data);
+    var {data} = await server.put('/api/app/user',i)
+    return Promise.resolve(data);
+}
+// 头像修改接口
+const photo = async function(i) {
+    var data = await server.post('/api/app/public/img',i)
+    console.log(data);
+    return Promise.resolve(data);
 }
 // 选择年纪和学科得数据
 const ageDis = async function() {
     var {data} = await server.get('/api/app/module/attribute/1')
-    return Promise.resolve(data.data);
+    return Promise.resolve(data);
 }
 // 获取城市列表数据
 const city = async function() {
@@ -141,12 +147,13 @@ const city = async function() {
 // 首页列表数据详情
 const indexdettails =async function(id){
     var {data}=await server.get(`/api/app/teacher/info/${id}`)
+    console.log(data)
     return data
 }
 
-// 首页列表数据详情
-const Collect = async function() {
-    var {data} = await server.get('/api/app/collect?page=1&limit=1&type=3')
+// 首页我的关注 
+const Collect = async function(obj) {
+    var {data} = await server.get('/api/app/collect?page='+obj.page+'&limit='+obj.limit+'&type='+obj.type)
     return Promise.resolve(data.data);
 }
 
@@ -159,7 +166,7 @@ const indexgz= async function(id){
 export {
     getBanners, 
     // getCurrData,
-    login,
+    logins,
     get_indexlist,
     indexdettails,
     courseBasis,
@@ -171,6 +178,7 @@ export {
     city,
     Collect,
     indexgz,
+    photo,
     courseInfo,
     collect,
     cancelCollect,

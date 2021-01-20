@@ -16,7 +16,7 @@ html,body{
     position: absolute;
     width: 200%;
     height: 1px;
-    background-color: #999;
+    background-color: #eee;
     transform: scale(0.5);
     bottom: 0;
     left: -50%;
@@ -27,7 +27,7 @@ html,body{
     position: absolute;
     width: 200%;
     height: 1px;
-    background-color: #999;
+    background-color: #eee;
     transform: scale(0.5);
     top: 0;
     left: -50%;
@@ -38,7 +38,7 @@ html,body{
     position: absolute;
     width: 1px;
     height: 200%;
-    background-color: #999;
+    background-color: #eee;
     transform: scale(0.5);
     left: 0;
     top: -50%;
@@ -49,7 +49,7 @@ html,body{
     position: absolute;
     width: 1px;
     height: 200%;
-    background-color: #999;
+    background-color: #eee;
     transform: scale(0.5);
     right: 0;
     top: -50%;

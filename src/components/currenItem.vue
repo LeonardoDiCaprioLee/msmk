@@ -27,6 +27,9 @@
         <img :src="item.cover_img" alt="" class="cover_img" />
       </template>
     </van-card>
+    <div class="search" v-show="this.show == true">
+      <p>没有关于{{$route.query.name}}的数据</p>
+    </div>
   </div>
 </template>
 
@@ -36,6 +39,10 @@ export default {
   data() {
     return {
       currData: [],
+      currData2: [],
+      // 搜索数据
+      searchList:'',
+      show:false
     };
   },
   methods: {
@@ -47,11 +54,25 @@ export default {
   filters: {},
   components: {},
   directives: {},
-  async mounted() {
+  async created() {
     let res = await courseBasis();
     console.log(res);
+    this.searchList = this.$route.query.name
     this.currData = res.data.list;
-    // console.log(this.currData.splice(0, 5));
+    this.currData2 = res.data.list;
+    if(this.searchList == '') {
+      this.currData = this.currData2  
+    }
+    if(this.searchList != undefined) {
+      this.currData = this.currData2.filter(res=>{
+          return res.title == this.searchList
+      })
+      if(this.currData.length!=0) {
+        this.show = false
+      } else {
+        this.show = true
+      }
+    }
   },
 };
 </script>
@@ -66,5 +87,20 @@ export default {
 .cover_img {
   width: 100%;
   height: 100%;
+}
+.search{
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  p{
+    width: 100%;
+    text-align: center;
+    line-height: 3rem;
+    font-size: 0.26rem;
+  }
 }
 </style>

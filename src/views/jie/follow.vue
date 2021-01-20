@@ -37,7 +37,11 @@ export default {
   components: {},
   directives: {},
   mounted() {
-    Collect().then(res=>{
+    Collect({
+      page:1,
+      limit:10,
+      type:2
+    }).then(res=>{
       console.log(res);
     })
   },

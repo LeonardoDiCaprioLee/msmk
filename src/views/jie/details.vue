@@ -174,6 +174,8 @@ export default {
       colleFlag: false,
       show1: false,
       initQCode: "http://localhost:8080/#/details?item=67",
+      show1:false,
+      initQCode: 'http://localhost:8080/#/details?item=67',
     };
   },
   methods: {
@@ -347,4 +349,18 @@ export default {
   height: 5rem;
   background-color: #fff;
 }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .block {
+    width: 5rem;
+    height: 5rem;
+    background-color: #fff;
+  
+    
+  }
 </style>
