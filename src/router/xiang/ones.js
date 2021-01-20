@@ -74,6 +74,11 @@ const add = [
         name : "Surplus",
         component : () => import("@/views/xiang/my/Surplus")
     },
+    {   // 意见反馈
+        path : "/feedback",
+        name : "Feedback",
+        component : () => import("@/views/xiang/my/Feedback")
+    },
 ]
 export {
     add

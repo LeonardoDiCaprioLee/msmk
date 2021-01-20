@@ -90,3 +90,22 @@ html,body{
     position: fixed;
     bottom: 0 !important;
 } */
+
+/* 留言文本样式 */
+.feedback .van-field__control{
+    height: 3.33rem !important;
+    border: 1px solid rgb(212, 211, 211);
+    border-radius: 0.1rem;
+    padding: 0.2rem;
+    color: #999;
+}
+.feedback .van-cell {
+    padding: 0.2rem 0.3rem;
+    border: none;
+}
+.feedback .van-cell::after{
+    display: none;
+}
+.feedback .van-field__word-limit {
+    color: #999;
+}

@@ -169,6 +169,14 @@ const myStudy= async function(){
     var {data}=await server.get('/api/app/myStudy/2?')
     return data
 }
+// 立即学习接口
+const myStudyCourse= async function(id){
+    console.log(id);
+    var {data}=await server.get(`/api/app/myStudy/course/${id}`)
+    console.log(data);
+    return data
+}
+
 
 
 export {
@@ -193,5 +201,6 @@ export {
     downOrder,
     myStudy,
     shopInfo,
-    courseChapter
+    courseChapter,
+    myStudyCourse
 }
