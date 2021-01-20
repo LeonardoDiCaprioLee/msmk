@@ -10,15 +10,16 @@
       <van-tabbar-item icon="setting-o" to="/my">我的</van-tabbar-item>
     </van-tabbar>
         <!-- 定位联系我们 -->
-    <div class="contact" @click="$router.push('/message')" v-drag>
+    <!-- <div class="contact" @click="$router.push('/message')" v-drag>
       <van-icon name="envelop-o" />
-    </div> 
+    </div>  -->
     <!-- 定位联系我们 -->
    
   </div>
 </template>
 
 <script>
+import '@/assets/js/meiqia.js'
 export default {
   name: "Home",
   data() {
