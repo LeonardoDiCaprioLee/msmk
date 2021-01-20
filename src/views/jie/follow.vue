@@ -16,7 +16,7 @@
                 <!-- <span>10年教龄</span> -->
               </p>
             </div>
-            <p><button @click="gotoDetail">查看详情</button></p>
+            <p><button @click="gotoDetail(item)">查看详情</button></p>
           </li>
         </ul>
     </div>
@@ -32,7 +32,8 @@ export default {
     };
   },
   methods: {
-    gotoDetail() {
+    gotoDetail(item) {
+this.$router.push({ path: "/Detailspage", query: { id: item } });
     }
   },
   computed: {},

@@ -1,4 +1,5 @@
 import server from '../server/http';
+import { promises } from 'fs';
 
 // 获取数据
 // const getBanners = async function() {
@@ -9,6 +10,13 @@ import server from '../server/http';
 // getBanners().then(res=>{
 //      this.list = res
 // })
+
+
+// 获取我的课程订单
+const getMyorder =async function (params){
+    let {data} = await server.post('/api/app/myOrder',{...params});
+    return Promise.resolve(data)
+}
 
 // 课程数据
 const courseBasis = async function(){
@@ -193,5 +201,6 @@ export {
     downOrder,
     myStudy,
     shopInfo,
-    courseChapter
+    courseChapter,
+    getMyorder
 }

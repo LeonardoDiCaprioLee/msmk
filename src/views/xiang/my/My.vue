@@ -9,7 +9,7 @@
                         <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
                     <span class="tel">{{personal.nickname}}<img src="@/assets/images/my-img/open.png" alt=""></span>
-                    <span>去约课</span>
+                    <span @click="$router.push('/curriculum')">去约课</span>
                 </div>
                 <ul>
                     <li @click="features">
@@ -62,7 +62,7 @@
                     <div>
                         <div>
                             <img src="@/assets/images/my-img/2-1.png" alt="">
-                            <span>课程订单</span>
+                            <span @click="$router.push('/myorder')">课程订单</span>
                         </div>
                         <div>
                             <img src="@/assets/images/my-img/2-1.png" alt="">
