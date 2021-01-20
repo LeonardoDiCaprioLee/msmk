@@ -52,7 +52,7 @@
         v-for="(item3,index3) in item.list"
         v-show="item.channel_info.type==6"
         :key="index3+'.'"
-        @click="jump_router"
+        @click="$router.push({path:'/Detailspag',query:{item3}})"
       >
         <div class="box-f-z">
           <img :src="item3.thumb_img" alt />

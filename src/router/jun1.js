@@ -22,4 +22,14 @@ export default [
         name: 'vip',
         component: () => import('../views/jun/VIP.vue')
     },
+    {
+        path: '/Detailspag',
+        name: 'Detailspag',
+        component: () => import('../views/jun/Detailspag.vue')
+    },
+    {
+        path: '/myorder',
+        name: 'myorder',
+        component: () => import('../views/jun/myorder.vue')
+    },
 ]
