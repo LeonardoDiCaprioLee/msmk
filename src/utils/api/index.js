@@ -32,8 +32,19 @@ const cancelCollect = async function(id){
     return Promise.resolve(data)
 }
 // 立即报名
-const downOrder = async function(id){
+const shopInfo = async function(id){
     let { data } = await server.post(`/api/app/order/shopInfo`,{shop_id: 183, type: 3, user_coupon_id: 0, address_id: "", product_number: 1});
+    return Promise.resolve(data)
+}
+// 提交报名订单
+const downOrder = async function(id){
+    let { data } = await server.post(`/api/app/order/downOrder`,{shop_id: 193, type: 5, user_coupon_id: 0, address_id: "", product_number: 1});
+    return Promise.resolve(data)
+}
+// http://120.53.31.103:84/api/app/courseChapter
+// 获取课程大纲
+const courseChapter = async function(id){
+    let { data } = await server.post(`http://120.53.31.103:84/api/app/courseChapter`,{id});
     return Promise.resolve(data)
 }
 
@@ -135,7 +146,7 @@ const city = async function() {
 
 // 首页列表数据详情
 const indexdettails =async function(id){
-    var {data}=await server.get(`/api/app/teacher/info/${id}`)
+    var {data}=await server.get(`/api/app/teacher/${id}`)
     console.log(data)
     return data
 }
@@ -181,4 +192,6 @@ export {
     cancelCollect,
     downOrder,
     myStudy,
+    shopInfo,
+    courseChapter
 }

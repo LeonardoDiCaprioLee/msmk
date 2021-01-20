@@ -16,7 +16,7 @@
                 <!-- <span>10年教龄</span> -->
               </p>
             </div>
-            <p><button>查看详情</button></p>
+            <p><button @click="gotoDetail">查看详情</button></p>
           </li>
         </ul>
     </div>
@@ -31,7 +31,10 @@ export default {
       list:[]
     };
   },
-  methods: {},
+  methods: {
+    gotoDetail() {
+    }
+  },
   computed: {},
   filters: {},
   components: {},

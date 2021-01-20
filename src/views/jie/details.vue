@@ -62,7 +62,12 @@
         <p class="taem" style="font-weight: 700">教学团队</p>
         <div class="teacherList">
           <div v-for="(item, index) in detailsData.teachers_list" :key="index">
-            <div style="border-radius: 50%">
+            <div
+              style="border-radius: 50%"
+              @click="
+                $router.push({ path: '/Detailspage', query: { id: item } })
+              "
+            >
               <img
                 :src="item.teacher_avatar"
                 alt=""
@@ -115,21 +120,41 @@
 
     <van-submit-bar button-text="立即报名" @submit="onSubmit" />
     <!-- 分享 -->
-      <van-overlay :show="show1" @click="unshow">
-  <div class="wrapper" @click="unshow">
-  
-    <div class="block" >
-      <p style='text-align:center;margin-top:0.2rem;color:red;font-size:0.3rem;'>快来扫一扫分享给好友吧！</p>
-        <qriously style="margin-left:25%;margin-top:20%;"  :value="initQCode" :size="138"/></div>
-  </div>
-</van-overlay>
-    
+    <van-overlay :show="show1" @click="unshow">
+      <div class="wrapper" @click="unshow">
+        <div class="block">
+          <p
+            style="
+              text-align: center;
+              margin-top: 0.2rem;
+              color: red;
+              font-size: 0.3rem;
+            "
+          >
+            快来扫一扫分享给好友吧！
+          </p>
+          <qriously
+            style="margin-left: 25%; margin-top: 20%"
+            :value="initQCode"
+            :size="138"
+          />
+        </div>
+      </div>
+    </van-overlay>
+
     <!-- 分享 -->
   </div>
 </template>
 
 <script>
-import { courseBasis, courseInfo, collect,cancelCollect,downOrder } from "../../utils/api/index";
+import {
+  courseBasis,
+  courseInfo,
+  collect,
+  cancelCollect,
+  shopInfo,
+  courseChapter,
+} from "../../utils/api/index";
 export default {
   data() {
     return {
@@ -147,6 +172,8 @@ export default {
       ],
       activeNames: [1],
       colleFlag: false,
+      show1: false,
+      initQCode: "http://localhost:8080/#/details?item=67",
       show1:false,
       initQCode: 'http://localhost:8080/#/details?item=67',
     };
@@ -201,9 +228,9 @@ export default {
     // 点击收藏按钮
     async clickCollection() {
       if (this.colleFlag) {
-      // 取消收藏
+        // 取消收藏
         this.colleFlag = false;
-        this.$toast.success("取消收藏成功")
+        this.$toast.success("取消收藏成功");
         // let res = await cancelCollect(this.detailsData.teachers_list[0].course_basis_id);
         // console.log(res)
       } else {
@@ -218,20 +245,25 @@ export default {
     },
     // 立即报名
     async onSubmit() {
-      let res = await downOrder(this.detailsData.course_type);
-      this.$router.push({path:'/order',query:{res}})
+      let res = await shopInfo(this.detailsData.course_type);
+      console.log(res);
+      this.$router.push({
+        path: "/order",
+        query: { res, courseTitle: this.courseTitle },
+      });
     },
-    share(){
+    share() {
       // console.log('分享')
       // console.log(this.$router.history.current.fullPath)
-      this.show1=true
-      this.initQCode='http://localhost:8080/#'+this.$router.history.current.fullPath
+      this.show1 = true;
+      this.initQCode =
+        "http://localhost:8080/#" + this.$router.history.current.fullPath;
       // console.log(this.initQCode)
     },
-    unshow(){
+    unshow() {
       // console.log(this.show1)
-      this.show1=false
-    }
+      this.show1 = false;
+    },
   },
   computed: {},
   filters: {},
@@ -241,14 +273,10 @@ export default {
     await this.detailsDatas();
     this.courseInfoData();
 
-    //   console.log(this.$route.query)
-    //   console.log(this.detailsData.teachers_list[0].teacher_name)
+    // console.log(this.$route.query)
+    // console.log(this.detailsData.teachers_list[0].teacher_name)
   },
-  watch: {
-    scroll() {
-      console.log(window);
-    },
-  },
+  watch: {},
 };
 </script>
 
@@ -308,6 +336,18 @@ export default {
 }
 .van-submit-bar__button {
   width: 100%;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  width: 5rem;
+  height: 5rem;
+  background-color: #fff;
 }
   .wrapper {
     display: flex;

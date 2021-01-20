@@ -6,10 +6,21 @@
       num="免费"
       price="2.00"
       :title="item.title"
-      @click="$router.push({path:'/details',query:{item:item.course_classify_id}})"
+      @click="
+        $router.push({
+          path: '/details',
+          query: { item: item.course_classify_id },
+        })
+      "
     >
-      <template #price> {{ item.brows_num }} 人已报名 </template>
+      <template #price> {{ item.brows_num }}人已报名 </template>
       <template #num>
+        <img
+          style="width: 1.2rem; position: absolute; top: 0.2rem; right: 0.2rem"
+          src="@/assets/img/jie/1611047474391.jpg"
+          alt=""
+          v-if="item.has_buy == 1"
+        />
         <span style="color: green">免费</span>
       </template>
       <template #thumb>
@@ -45,6 +56,7 @@ export default {
   directives: {},
   async created() {
     let res = await courseBasis();
+    console.log(res);
     this.searchList = this.$route.query.name
     this.currData = res.data.list;
     this.currData2 = res.data.list;
