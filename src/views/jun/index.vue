@@ -31,7 +31,7 @@
       <!-- title -->
       <!-- 老师分类 -->
       <div
-        v-show="item.channel_info.sort==1||item.channel_info.sort==4"
+        v-show="item.channel_info.type==3"
         class="oto-content"
         v-for="(item2,index2) in item.list"
         :key="index2"
@@ -50,25 +50,24 @@
       <div
         class="box-f"
         v-for="(item3,index3) in item.list"
-        v-show="item.channel_info.sort!=1&&item.channel_info.sort!=4"
+        v-show="item.channel_info.type==6"
         :key="index3+'.'"
         @click="jump_router"
       >
         <div class="box-f-z">
-          <p
-            style="font-size:0.35rem;padding-top:0.25rem;padding-left:0.26rem;float:left"
-          >{{item3.title}}</p>
-          <span style="font-size:0.2rem;float:left;padding-top:0.22rem">共{{item3.total_periods}}课时</span>
-          <ul v-for="(item4,index4) in item3.teachers_list" :key="index4" class="box-f-ul1">
-            <li>
-              <img :src="item4.teacher_avatar" />
+          <img :src="item3.thumb_img" alt />
+          <ul>
+            <li>{{item3.title}}</li>
+            <li
+              style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;color:gray"
+            >{{item3.description}}</li>
+            <li style="color:gray">
+              <span>
+                <van-icon name="eye-o" />
+                {{item3.click_rate}}
+              </span>
+              <span style="margin-left:0.1rem;">{{timestampToTime(item3.created_at)}}</span>
             </li>
-            <li class="baoming">{{item4.teacher_name}}</li>
-          </ul>
-
-          <ul class="box-f-ul2">
-            <li style="font-size:0.22rem">{{item3.sales_num}}人已报名</li>
-            <li style="font-size:0.3rem;color:green;">免费</li>
           </ul>
         </div>
       </div>
@@ -121,15 +120,16 @@ export default {
     // 获取list列表数据
     get_indexlist().then(res => {
       // 获取自己模拟的数据
-      this.arr = arr[0].data;
+      // this.arr = arr[0].data;
       // console.log(res)
-      // this.arr=res.data
+      this.arr = res.data;
     });
   },
   components: {
     pubox
   },
   computed: {},
+
   methods: {
     // 跳转路由
     jump_router(item) {
@@ -155,12 +155,34 @@ export default {
     },
     signout() {
       setTimeout(() => {
-        var token=localStorage.getItem('token')
-        console.log(token)
-        localStorage.removeItem('token')
-        console.log('清除token')
+        var token = localStorage.getItem("token");
+        console.log(token);
+        localStorage.removeItem("token");
+        console.log("清除token");
         this.log();
       }, 3000000);
+    },
+    timestampToTime(timestamp) {
+      var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      // let Y = date.getFullYear() + '-';
+      // let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+      // let D = date.getDate() + ' ';
+      // let h = date.getHours() + ':';
+      // let m = date.getMinutes() + ':';
+      // let s = date.getSeconds();
+      // return Y+this.padLeftZero(M)+this.padLeftZero(D)+this.padLeftZero(h)+this.padLeftZero(m)+this.padLeftZero(s);
+      let y = date.getFullYear();
+      let MM = date.getMonth() + 1;
+      MM = MM < 10 ? "0" + MM : MM;
+      let d = date.getDate();
+      d = d < 10 ? "0" + d : d;
+      let h = date.getHours();
+      h = h < 10 ? "0" + h : h;
+      let m = date.getMinutes();
+      m = m < 10 ? "0" + m : m;
+      let s = date.getSeconds();
+      s = s < 10 ? "0" + s : s;
+      return y + "-" + MM + "-" + d + " " + h + ":" + m + ":" + s;
     }
   }
 };
