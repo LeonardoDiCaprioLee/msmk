@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import '@/assets/js/meiqia.js'
+import '@/assets/js/meiqia.js' 
 export default {
   name: "Home",
   data() {
