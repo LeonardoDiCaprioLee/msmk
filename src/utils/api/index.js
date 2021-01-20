@@ -142,16 +142,24 @@ const indexdettails =async function(id){
 
 // 首页我的关注 
 const Collect = async function(obj) {
-    var {data} = await server.get('/api/app/collect?page='+obj.page+'&limit='+obj.limit+'&type='+obj.type)
+    var {data} = await server.get('/api/app/collect?page=1&limit=10&type=2')
     return Promise.resolve(data.data);
 }
 
 // index关注
 const indexgz= async function(id){
     var {data}=await server.get(`/api/app/teacher/collect/${id}`)
-    console.log(data)
+    console.log(id)
     return data
 }
+
+// 我的特色课
+const myStudy= async function(){
+    var {data}=await server.get('/api/app/myStudy/2?')
+    return data
+}
+
+
 export {
     getBanners, 
     // getCurrData,
@@ -171,5 +179,6 @@ export {
     courseInfo,
     collect,
     cancelCollect,
-    downOrder
+    downOrder,
+    myStudy,
 }

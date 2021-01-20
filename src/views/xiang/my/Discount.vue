@@ -17,7 +17,9 @@
                     <span>{{item.startTime}}--{{item.endTime}}</span>
                 </li>
                 <li>
-                    <button>立即使用</button>
+                    <button class="stop_use" v-show="active==1">已使用</button>
+                    <button class="once_use" v-show="active==2">立即使用</button>
+                    <button class="stale_dated" v-show="active==3">已过期</button>
                 </li>
             </ol>
         </li>
@@ -108,14 +110,14 @@ export default {
     onClickLeft(){
         this.$router.go(-1)
     },
-    //   登录
+    //   切换优惠券状态
     classify(){
         if(this.active == 0){
             this.list = this.discount
         } else {
-              this.list = this.discount.filter(item=>{
-                  return item.cid == this.active
-              })
+            this.list = this.discount.filter(item=>{
+                return item.cid == this.active
+            })
         }
     },
 
@@ -177,9 +179,18 @@ export default {
                         width: 100%;
                         height: 100%;
                         font-size: 0.3rem;
-                        background-color: rgba(255, 68, 0, 0.781);
                         border-radius: 0.2rem;
                         color: #fff;
+                    }
+                    .stop_use{
+                        background-color: orangered;
+                    }
+                    .once_use{
+                        background-color:red;
+                    }
+                    .stale_dated{
+                        color: #999;
+                        background-color:#eee;
                     }
                 }
             }

@@ -17,12 +17,12 @@
                         <span>我的特色课</span>
                         <span>已购特色课程的学习</span>
                     </li>
-                    <li>
+                    <li @click="oneToOne">
                         <span>0</span>
                         <span>一对一辅导</span>
                         <span>我的一对一老师辅导</span>
                     </li>
-                    <li>
+                    <li @click="surplus">
                         <span>0.00</span>
                         <span>剩余学习币</span>
                         <span>查看剩余学习币</span>
@@ -143,7 +143,15 @@ export default {
         },
         // 特色课
         features() {
-
+            this.$router.push('/myFeature')
+        },
+        // 一对一辅导
+        oneToOne() {
+            this.$router.push('/oneToOne')
+        },
+        // 剩余学习币
+        surplus() {
+            this.$router.push('/surplus')
         },
         // 用户信息
         setUser(){

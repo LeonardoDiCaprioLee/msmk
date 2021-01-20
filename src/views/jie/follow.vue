@@ -3,17 +3,17 @@
     <van-nav-bar title="我的关注" left-arrow @click-left="$router.go(-1)" />
     <div class="content">
         <ul>
-          <li>
-            <p><img src="" alt=""></p>
+          <li v-for="(item,index) in list" :key="index">
+            <p><img :src="item.avatar" alt=""></p>
             <div>
               <p>
-                <span class="title">李湘老师</span>
+                <span class="title">{{item.teacher_name}}</span>
                 <span class="or">已关注</span>
               </p>
               <p>
-                <span>女</span>
-                <span>32岁</span>
-                <span>10年教龄</span>
+                <span class="itemList">{{item.introduction}}</span>
+                <!-- <span>32岁</span> -->
+                <!-- <span>10年教龄</span> -->
               </p>
             </div>
             <p><button>查看详情</button></p>
@@ -42,6 +42,7 @@ export default {
       limit:10,
       type:2
     }).then(res=>{
+      this.list = res.list
       console.log(res);
     })
   },
@@ -74,7 +75,7 @@ export default {
               justify-content: center;
               align-items: center;
             img{
-              width: 20%;
+              width: 1rem;
               height: 1rem;
               border-radius: 50%;
             }
@@ -101,6 +102,12 @@ export default {
               span{
                 font-size: 0.26rem;
                 margin-right: 0.2rem;
+              }
+              .itemList{
+                width: 2.1rem;
+                 white-space:nowrap;
+                 overflow:hidden;
+                 text-overflow:ellipsis;
               }
               .or{
                 color: orangered;
