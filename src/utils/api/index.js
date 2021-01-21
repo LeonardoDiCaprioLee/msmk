@@ -41,6 +41,11 @@ const downOrder = async function(id){
     let { data } = await server.post(`/api/app/order/downOrder`,{shop_id: 193, type: 5, user_coupon_id: 0, address_id: "", product_number: 1});
     return Promise.resolve(data)
 }
+// 取消收藏
+const collectcancel = async function(id){
+    let { data } = await server.post(`/api/app/collect/cancel/227/1`,{collect_id:id});
+    return Promise.resolve(data)
+}
 // http://120.53.31.103:84/api/app/courseChapter
 // 获取课程大纲
 const courseChapter = async function(id){
@@ -184,5 +189,6 @@ export {
     cancelCollect,
     downOrder,
     shopInfo,
-    courseChapter
+    courseChapter,
+    collectcancel
 }

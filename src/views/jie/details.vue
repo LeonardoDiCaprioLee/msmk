@@ -21,9 +21,9 @@
           <van-icon
             name="star-o"
             @click="clickCollection"
-            v-show="!colleFlag"
+            v-show="detileInfo.is_collect == 0"
           />
-          <van-icon name="star" @click="clickCollection" v-show="colleFlag" />
+          <van-icon name="star" @click="clickCollection" v-show="detileInfo.is_collect >= 1" />
         </p>
 
         <br /><br />
@@ -154,6 +154,7 @@ import {
   cancelCollect,
   shopInfo,
   courseChapter,
+  collectcancel,
 } from "../../utils/api/index";
 export default {
   data() {
@@ -176,6 +177,7 @@ export default {
       initQCode: "http://localhost:8080/#/details?item=67",
       show1:false,
       initQCode: 'http://localhost:8080/#/details?item=67',
+      detileInfo : {}
     };
   },
   methods: {
@@ -220,27 +222,31 @@ export default {
       let res = await courseInfo(
         this.detailsData.teachers_list[0].course_basis_id
       );
+      // console.log(res)
       this.courseTitle[0].course_details = res.data.info.course_details;
       this.courseTitle[1].title = res.data.info.title;
+      console.log()
+      this.detileInfo = res.data.info;
+      console.log(this.detileInfo)
       // console.log(res);
       // console.log(this.courseTitle);
     },
     // 点击收藏按钮
     async clickCollection() {
-      if (this.colleFlag) {
+      if (this.detileInfo.is_collect > 0) {
         // 取消收藏
-        this.colleFlag = false;
+        let res = await collectcancel(this.detileInfo.collect_id);
+        console.log(res)
         this.$toast.success("取消收藏成功");
-        // let res = await cancelCollect(this.detailsData.teachers_list[0].course_basis_id);
-        // console.log(res)
+       
       } else {
         let res = await collect(
           this.detailsData.teachers_list[0].course_basis_id
         );
+        console.log(res)
         if (res.code == 200) {
           this.$toast.success(res.msg);
         }
-        this.colleFlag = true;
       }
     },
     // 立即报名
