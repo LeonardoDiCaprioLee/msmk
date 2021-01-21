@@ -84,7 +84,8 @@
     <!-- 头像弹框 -->
     <van-popup v-model="photoShow" position="bottom" class="photo">
       <p class="border-bottom">拍张</p>
-      <p class="border-bottom" @click="gotoPhoto"><input type="file" accept="image/*" @change="handleFile" class="hiddenInput" style="display: none;"/>从相册中添加图片</p>
+      <p class="border-bottom" @click="gotoPhoto">
+        <input type="file" accept="image/*" @change="handleFile" class="hiddenInput" style="display: none;"/>从相册中添加图片</p>
       <p>取消</p>
     </van-popup>
     <!-- <van-cell v-model="photoShow" value="1" position="bottom" :style="{ height: '30%' }" > -->
@@ -266,10 +267,11 @@ export default {
     },
     // 相册中选择相片
     gotoPhoto() {
+      console.log(this);
       this.$el.querySelector('.hiddenInput').click()
     },
     // 修改头像
-    handleFile(e) {
+    handleFile() {
       this.photoShow = false
       // 将本地图片转换为线上图片
       let formDate = new FormData()

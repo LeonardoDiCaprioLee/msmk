@@ -59,10 +59,25 @@ const add = [
         name : "follow",
         component : () => import("@/views/jie/follow")
     },
-    { // 我的关注路由
-        path : "/introduce",
-        name : "Introduce",
-        component : () => import("@/views/xiang/detail/Introduce")
+    {   // 我的特色课
+        path : "/myFeature",
+        name : "MyFeature",
+        component : () => import("@/views/xiang/my/MyFeature")
+    },
+    {   // 我的特色课
+        path : "/oneToOne",
+        name : "OneToOne",
+        component : () => import("@/views/xiang/my/OneToOne")
+    },
+    {   // 剩余学习币
+        path : "/surplus",
+        name : "Surplus",
+        component : () => import("@/views/xiang/my/Surplus")
+    },
+    {   // 意见反馈
+        path : "/feedback",
+        name : "Feedback",
+        component : () => import("@/views/xiang/my/Feedback")
     },
 ]
 export {

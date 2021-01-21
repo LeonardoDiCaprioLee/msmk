@@ -9,20 +9,20 @@
                         <img src="@/assets/images/my-img/crown.png" alt="" class="crown">
                     </div>
                     <span class="tel">{{personal.nickname}}<img src="@/assets/images/my-img/open.png" alt=""></span>
-                    <span>去约课</span>
+                    <span @click="$router.push('/curriculum')">去约课</span>
                 </div>
                 <ul>
-                    <li @click="features">
-                        <span>0</span>
+                    <li @click="$router.push('/myFeature')">
+                        <span>{{num}}</span>
                         <span>我的特色课</span>
                         <span>已购特色课程的学习</span>
                     </li>
-                    <li>
+                    <li @click="$router.push('/oneToOne')">
                         <span>0</span>
                         <span>一对一辅导</span>
                         <span>我的一对一老师辅导</span>
                     </li>
-                    <li>
+                    <li @click="$router.push('/surplus')">
                         <span>0.00</span>
                         <span>剩余学习币</span>
                         <span>查看剩余学习币</span>
@@ -62,7 +62,7 @@
                     <div>
                         <div>
                             <img src="@/assets/images/my-img/2-1.png" alt="">
-                            <span>课程订单</span>
+                            <span @click="$router.push('/myorder')">课程订单</span>
                         </div>
                         <div>
                             <img src="@/assets/images/my-img/2-1.png" alt="">
@@ -98,7 +98,7 @@
                             <img src="@/assets/images/my-img/4-1.png" alt="">
                             <span>我的消息</span>
                         </div>
-                        <div>
+                        <div @click="$router.push('/feedback')">
                             <img src="@/assets/images/my-img/4-2.png" alt="">
                             <span>意见反馈</span>
                         </div>
@@ -118,18 +118,25 @@
 </template>
 
 <script>
-import {Personal} from '@/utils/api/index'
+import {Personal,myStudy} from '@/utils/api/index'
 export default {
     data() {
         return {
             tel:Number,
             personal:{},
-            obj:{}
+            obj:{},
+            num:0
         };
     },
-    mounted() {
+    created() {
         Personal().then(res=>{
             this.personal = res
+        })
+        myStudy().then(res=>{
+            console.log(res);
+             res.data.typeNum.forEach(item=>{
+                 this.num +=item.num
+            })
         })
     },
     methods: {
@@ -140,10 +147,6 @@ export default {
         // 跳转设置页面
         reset(){
             this.$router.push({path:'/reset'})
-        },
-        // 特色课
-        features() {
-
         },
         // 用户信息
         setUser(){

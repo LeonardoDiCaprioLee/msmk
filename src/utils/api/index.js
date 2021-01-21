@@ -1,4 +1,5 @@
 import server from '../server/http';
+import { promises } from 'fs';
 
 // 获取数据
 // const getBanners = async function() {
@@ -9,6 +10,13 @@ import server from '../server/http';
 // getBanners().then(res=>{
 //      this.list = res
 // })
+
+
+// 获取我的课程订单
+const getMyorder =async function (params){
+    let {data} = await server.post('/api/app/myOrder',{...params});
+    return Promise.resolve(data)
+}
 
 // 课程数据
 const courseBasis = async function(){
@@ -151,23 +159,39 @@ const city = async function() {
 
 // 首页列表数据详情
 const indexdettails =async function(id){
-    var {data}=await server.get(`/api/app/teacher/info/${id}`)
+    var {data}=await server.get(`/api/app/teacher/${id}`)
     console.log(data)
     return data
 }
 
 // 首页我的关注 
 const Collect = async function(obj) {
-    var {data} = await server.get('/api/app/collect?page='+obj.page+'&limit='+obj.limit+'&type='+obj.type)
+    var {data} = await server.get('/api/app/collect?page=1&limit=10&type=2')
     return Promise.resolve(data.data);
 }
 
 // index关注
 const indexgz= async function(id){
     var {data}=await server.get(`/api/app/teacher/collect/${id}`)
-    console.log(data)
+    console.log(id)
     return data
 }
+
+// 我的特色课
+const myStudy= async function(){
+    var {data}=await server.get('/api/app/myStudy/2?')
+    return data
+}
+// 立即学习接口
+const myStudyCourse= async function(id){
+    console.log(id);
+    var {data}=await server.get(`/api/app/myStudy/course/${id}`)
+    console.log(data);
+    return data
+}
+
+
+
 export {
     getBanners, 
     // getCurrData,
@@ -188,7 +212,10 @@ export {
     collect,
     cancelCollect,
     downOrder,
+    myStudy,
     shopInfo,
     courseChapter,
-    collectcancel
+    collectcancel,
+    myStudyCourse,
+    getMyorder
 }

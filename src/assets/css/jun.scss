@@ -85,51 +85,27 @@ body,html,#app{
     // background: pink;
    .box-f-z{
        width: 7.104rem;
-    height: 3.5rem;
+    height: 2rem;
     background: white;
     margin-top: 0.2rem;
     border-radius: 0.15rem;
-    p{
-        width: 90%;
-    }
-    span{
-        padding-left: 0.3rem;
-        color: #b7b7b7;
-    }
-    .box-f-ul1{
-        width: 100%;
-        float: left;
-        margin-top: 0.4rem;
+    ul{
+        margin-left: 3rem;
+        // padding-left: 2.2rem;
+        padding-top: 0.2rem;
         li{
-            float: left;
-            img{
-                width:0.76rem;
-                height:0.76rem;
-                border-radius: 50%;
-            }
-            font-size: 0.12rem;
-            text-align: center;
-            line-height: 0.8rem;
-            padding-left: 0.3rem;
-            color: #b7b7b7;
+            font-size: 0.3rem;
+            margin-top: 0.2rem;
+           
         }
     }
-    .box-f-ul2{
-        width: 100%;
+    img{
         float: left;
-        float: left;
-        display: flex;
-        justify-content: space-between;
-
-        li{
-            padding-left: 0.3rem;
-            padding-right: 0.3rem;
-            float: left;
-            
-        }
-        .baoming{
-            color: #b7b7b7
-        }
+        width: 2.5rem;
+        height: 1.5rem;
+        margin-left: 0.2rem;
+        margin-top: 0.25rem;
+        border-radius: 0.1rem;
     }
    }
 }
